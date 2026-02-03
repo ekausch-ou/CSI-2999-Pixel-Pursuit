@@ -1,0 +1,65 @@
+{% load static %}
+
+<style>
+    .back {
+        background: linear-gradient(135deg, #00dacb9f, #886abbce);
+    }
+</style>
+<html>
+    <head>
+        {% include 'elements/includes.html' %}
+        <title>Pixel Pursuit</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'tic_tac_toe/style.css' %}">
+    </head>
+<body>
+    
+{% include 'elements/navbar.html' with active="home" %}
+<body onload="setHeight();">
+    <div class="d-flex flex-column pt-2 pb-2" style="height: calc(100vh - 56px);">
+        <div class="vstack h-100">
+            <div class="container-fluid h-100" style="max-width: 70%;">
+                <div class="row">
+                    <div class="col text-center">
+                        <h1 class="display-2">Pixel Pursuit</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-3">
+                        <div class="card bg-dark text-white h-100">
+                            <img src="{% static 'assets/blank.png' %}" class="card-img" alt="image">
+                            <div class="card-img-overlay">
+                                <a href="" class="card-title stretched-link text-decoration-none text-white fs-1">Game 1</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-3">
+                        <div class="card bg-dark text-white h-100">
+                            <img src="{% static 'assets/blank.png' %}" class="card-img" alt="image">
+                            <div class="card-img-overlay">
+                                <a href="" class="card-title stretched-link text-decoration-none text-white fs-1">Game 2</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-3">
+                        <div class="card bg-dark text-white h-100">
+                            <img src="{% static 'assets/blank.png' %}" class="card-img" alt="image">
+                            <div class="card-img-overlay">
+                                <a href="" class="card-title stretched-link text-decoration-none text-white fs-1">Game 3</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-3">
+                        <div class="card bg-dark text-white h-100">
+                            <img src="{% static 'assets/blank.png' %}" class="card-img" alt="image">
+                            <div class="card-img-overlay">
+                                <a href="" class="card-title stretched-link text-decoration-none text-white fs-1">Game 4</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'tic_tac_toe/script.js' %}"></script>
+</body>
