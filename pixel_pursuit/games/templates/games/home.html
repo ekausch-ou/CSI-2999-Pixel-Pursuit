@@ -10,7 +10,6 @@
         {% include 'elements/includes.html' %}
         <title>Pixel Pursuit</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'tic_tac_toe/style.css' %}">
     </head>
 <body>
     
@@ -19,7 +18,7 @@
     <div class="d-flex flex-column pt-2 pb-2" style="height: calc(100vh - 56px);">
         <div class="vstack h-100">
             <div class="container-fluid h-100" style="max-width: 70%;">
-                <div class="row">
+                <div class="row mb-5">
                     <div class="col text-center">
                         <h1 class="display-2">Pixel Pursuit</h1>
                     </div>
@@ -61,5 +60,4 @@
             </div>
         </div>
     </div>
-    <script src="{% static 'tic_tac_toe/script.js' %}"></script>
 </body>

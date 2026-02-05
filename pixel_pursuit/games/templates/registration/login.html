@@ -1,0 +1,45 @@
+{% load static %}
+
+{% include 'elements/includes.html' %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Pixel Pursuit Login</title>
+        {% include 'elements/navbar.html' with active="" %}
+    </head>
+
+    <body onload="setHeight();">
+        <div class="d-flex justify-content-center align-items-center pt-2 pb-2" style="height: calc(100vh - 56px); background-color: #d0fbfc">
+            <div class="card bg-light mb-5" style="min-width: 350px;">
+                <div class="card-body text-center">
+                    <form method="post">
+                        {% csrf_token %}
+                        <h1 class="h3 mb-3 fw-normal">Login:</h1>
+                        
+                        <div class="form-floating mb-2"> 
+                            <input type="text" class="form-control {% if form.non_field_errors %}is-invalid{% endif %}" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+                            <label for="floatingInput">Username</label>
+                        </div>
+                        <div class="form-floating mb-2">
+                            <input type="password" class="form-control {% if form.non_field_errors %}is-invalid{% endif %}" name="password" autocomplete="current-password" required="" id="id_password">
+                            <label for="floatingPassword">Password</label>
+                            <div class="invalid-feedback">
+                                {% if form.non_field_errors %}Please enter a correct Username & Password{% endif %}
+                            </div>
+                        </div>
+                        <p><a href="{% url 'password_reset' %}">Forgot password?</a></p>
+                        <button class="w-100 btn btn-lg btn-secondary mb-2" type="submit" value="login">Sign in</button>
+                        <div class="d-flex justify-content-center gap-1">
+                            <p class="mb-0">New to Pixel Pursuit?</p>
+                            <p class="mb-0">
+                                <a href="{% url 'register' %}">Sign Up</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>       
+    </body>
+</html>

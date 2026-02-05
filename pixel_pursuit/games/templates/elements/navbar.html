@@ -6,7 +6,7 @@
     }
 </style>
 
-<nav class="navbar navbar-buffer navbar-expand-lg navbar-dark" style="background-color: #B0E0E2;"
+<nav class="navbar navbar-buffer navbar-expand-lg navbar-dark" style="background-color: #B0E0E2;">
     <div class="container-fluid">
         <a class="navbar-brand exclude m-0 p-0" href=""><img src="{% static 'assets/logo.png' %}" alt="home icon" style="max-width: 30px;"/></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,9 +20,15 @@
                 <li class="nav-item">
                     <a class="nav-link {% if active == 'achievements' %}active{% endif %}" style="color:#212529"aria-current="page" href="">Achievements</a>
                 </li>
-                    <li class="nav-item d-lg-none">
-                        <a class="nav-link" style="color:#212529" href="">Sign In</a>
-                    </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item d-lg-none">
+                    <a class="nav-link" style="color:#212529" href="{% url 'logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item d-lg-none">
+                    <a class="nav-link" style="color:#212529" href="{% url 'login' %}">Login</a>
+                </li>
+                {% endif %}
             </ul>
             <ul class="navbar-nav ms-auto d-none d-lg-flex">
                 <li class="nav-item dropdown">
@@ -30,14 +36,17 @@
                         <img src="{% static 'assets/profile.png' %}" alt="" width="32" height="32" class="rounded-circle me-2">
                     </a>
 
-                    <ul class="dropdown-menu dropdown-menu-end shadow"
-                        aria-labelledby="dropdownUser">
+                    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="dropdownUser">
 
+                        {% if user.is_authenticated %}
                         <li>
-                            <a class="dropdown-item" href="">
-                                Sign In
-                            </a>
+                            <a class="dropdown-item" style="color:#212529" href="{% url 'logout' %}">Logout</a>
                         </li>
+                        {% else %}
+                        <li>
+                            <a class="dropdown-item" style="color:#212529" href="{% url 'login' %}">Login</a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </li>
             </ul>
