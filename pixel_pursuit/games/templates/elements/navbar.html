@@ -18,7 +18,10 @@
                     <a class="nav-link {% if active == 'home' %}active{% endif %}" style="color:#212529"aria-current="page" href="{% url 'home' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if active == 'achievements' %}active{% endif %}" style="color:#212529"aria-current="page" href="">Achievements</a>
+                    <a class="nav-link {% if active == 'achievements' %}active{% endif %}" style="color:#212529"aria-current="page" href="{% url 'achievements' %}">Achievements</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if active == 'achievements' %}active{% endif %}" style="color:#212529"aria-current="page" href="{% url 'leaderboard' %}">Leaderboard</a>
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item d-lg-none">

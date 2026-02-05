@@ -1,0 +1,59 @@
+{% load static %}
+
+<html>
+    <head>
+        {% include 'elements/includes.html' %}
+        <title>Achievements</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+<body>
+    
+{% include 'elements/navbar.html' with active="home" %}
+<body onload="setHeight();">
+    <div class="d-flex flex-column pt-2 pb-2" style="height: calc(100vh - 56px);">
+        <div class="vstack h-100">
+            <div class="container-fluid text-center h-100" style="max-width: 70%;">
+                <div class="row mb-5">
+                    <div class="col text-center">
+                        <h1 class="display-2">Achievements</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <h1 class="display-4">Game I</h1>
+                </div>
+                <div class="row">
+                {% for achievement in achievements_1 %}
+                    {% include 'elements/achievement.html' with achieve=achievement %}
+                {% endfor %}
+                </div>
+                <hr>
+                <div class="row">
+                    <h1 class="display-4">Game II</h1>
+                </div>
+                <div class="row">
+                {% for achievement in achievements_2 %}
+                    {% include 'elements/achievement.html' with achieve=achievement %}
+                {% endfor %}
+                </div>
+                <hr>
+                <div class="row">
+                    <h1 class="display-4">Game III</h1>
+                </div>
+                <div class="row">
+                {% for achievement in achievements_3 %}
+                    {% include 'elements/achievement.html' with achieve=achievement %}
+                {% endfor %}
+                </div>
+                <hr>
+                <div class="row">
+                    <h1 class="display-4">Game I</h1>
+                </div>
+                <div class="row">
+                {% for achievement in achievements_4 %}
+                    {% include 'elements/achievement.html' with achieve=achievement %}
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -4,7 +4,8 @@ from django.core.mail import send_mail
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-@receiver(post_save, sender=User)
+# Email for user registration
+@receiver(post_save, sender=User) # On new User
 def send_welcome_email(sender, instance, created, **kwargs):
     if created:
         send_mail(
