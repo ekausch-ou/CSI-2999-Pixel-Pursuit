@@ -1,0 +1,63 @@
+{% load static %}
+
+{% include 'elements/includes.html' %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Change Password</title>
+        {% include 'elements/navbar.html' with active="" %}
+    </head>
+
+    <body onload="setHeight();">
+        <div class="d-flex justify-content-center align-items-center pt-2 pb-2"
+             style="height: calc(100vh - 56px); background-color: #d0fbfc">
+
+            <div class="card bg-light mb-5" style="min-width: 350px; max-width: 420px;">
+                <div class="card-body text-center">
+
+                    <h5 class="mb-3">Change your password</h5>
+
+                    <p class="mb-3">
+                        Please enter your old password for security<br>
+                        and then enter your new password twice<br>
+                        so we can verify it’s typed correctly.<br>
+                    </p>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+
+                        <div class="form-floating mb-2">
+                            <input type="password" class="form-control" name="old_password" autocomplete="current-password" required id="id_old_password">
+                            <label for="id_old_password1">Old Password</label>
+                        </div>
+
+                        <div class="form-floating mb-2">
+                            <input type="password" class="form-control" name="new_password1" autocomplete="current-password" required id="id_new_password1">
+                            <label for="id_new_password1">New Password</label>
+                            <div id="new_password1Help" class="form-text">Password must contain at least 8 characters</div>
+                            <div id="id_pass1_feedback" class="invalid-feedback">
+                            </div>
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <input type="password" class="form-control" name="new_password2" autocomplete="current-password" required id="id_new_password2">
+                            <label for="id_new_password2">New Password Confirmation</label>
+                            <div class="invalid-feedback">
+                                Passwords do not match
+                            </div>
+                        </div>
+
+                        <input type="submit" class="w-100 btn btn-secondary" value="Change my password">
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>
+
+<script src="{% static 'js/password_validation.js' %}"></script>
