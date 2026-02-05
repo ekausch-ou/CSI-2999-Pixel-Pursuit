@@ -3,7 +3,10 @@ from django.urls import include, path
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+    # Django Admin Page - Not in use now but will allow admin control of users and other database items.
     path('admin/', admin.site.urls),
+
+    # Overriding the default Django Authentication pages
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='registration/password_form.html', email_template_name='registration/password_email.html', subject_template_name="registration/password_subject.html"), name='password_reset'),
     path("password_reset/done/", auth_views.PasswordResetDoneView.as_view(template_name="registration/password_sent.html"), name="password_reset_done"),
     path("reset/<uidb64>/<token>/", auth_views.PasswordResetConfirmView.as_view(template_name="registration/password_confirm.html"), name="password_reset_confirm"),
@@ -11,7 +14,9 @@ urlpatterns = [
 
     path("password_change/", auth_views.PasswordChangeView.as_view(template_name="registration/change_form.html"), name="password_change"),
     path("password_change/done/", auth_views.PasswordChangeDoneView.as_view(template_name="registration/change_done.html"), name="password_change_done"),
-    
+    # Catch all for any missed auth pages
     path('', include('django.contrib.auth.urls')),
+
+    # Games App URLs
     path("", include("games.urls")),
 ]
