@@ -3,19 +3,121 @@
 <html>
     <head>
         {% include 'elements/includes.html' %}
-        <title>Achievements</title>
+        <title>Leaderboard</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            .leaderboard-item {
+                width: 500px;
+                max-width: 95%;
+                display: flex;
+                align-items: center;
+                border-radius: 50px;
+                background-color: #B0E0E2;
+            }
+            .leaderboard-item img.profile-pic {
+                width: 50px;
+                object-fit: cover;
+                border-radius: 50%;
+                margin-right: 15px;
+            }
+            .leaderboard-item .username {
+                flex: 1;
+                font-weight: 500;
+            }
+            .leaderboard-item .score {
+                font-weight: 600;
+                margin-right: 15px;
+            }
+            .leaderboard-container {
+                width: 600px;
+                max-width: 100%;
+                border: 4px solid #dee5e6;
+                border-radius: 1.5rem;
+                position: relative;
+                padding-top: 3rem;
+            }
+
+            .game-title {
+                font-size: 2rem;
+                text-align: center;
+                top: 0;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 0 1rem;
+            }
+        </style>
     </head>
 <body>
     
 {% include 'elements/navbar.html' with active="home" %}
 <body onload="setHeight();">
-    <div class="d-flex flex-column pt-2 pb-2" style="height: calc(100vh - 56px);">
+    <div class="d-flex flex-column pt-2 pb-2">
         <div class="vstack h-100">
-            <div class="container-fluid text-center h-100" style="max-width: 70%;">
-                <div class="row">
+            <div class="container-fluid text-center h-100">
+                <div class="row mb-5">
                     <div class="col">
-                        
+                        <h1 class="display-2">Leaderboard</h1>
+                    </div>
+                </div>
+
+                <!-- Game I -->    
+                <div class="d-flex justify-content-center mb-5">
+                    <div class="leaderboard-container position-relative p-4 rounded-4 border shadow-sm">
+                        <h1 class="game-title position-absolute top-0 start-50 translate-middle bg-white px-3">
+                            Game I
+                        </h1>
+
+                        <div class="d-flex flex-column align-items-center mt-5 pt-3">
+                            {% for user in leaderboard %}
+                                {% include 'elements/leaderboard_pill.html' with user=user %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+               
+                <!-- Game II -->    
+                <div class="d-flex justify-content-center mb-5">
+                    <div class="leaderboard-container position-relative p-4 rounded-4 border shadow-sm">
+                        <h1 class="game-title position-absolute top-0 start-50 translate-middle bg-white px-3">
+                            Game II
+                        </h1>
+
+                        <div class="d-flex flex-column align-items-center mt-5 pt-3">
+                            {% for user in leaderboard %}
+                                {% include 'elements/leaderboard_pill.html' with user=user %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game III -->    
+                <div class="d-flex justify-content-center mb-5">
+                    <div class="leaderboard-container position-relative p-4 rounded-4 border shadow-sm">
+                        <h1 class="game-title position-absolute top-0 start-50 translate-middle bg-white px-3">
+                            Game III
+                        </h1>
+
+                        <div class="d-flex flex-column align-items-center mt-5 pt-3">
+                            {% for user in leaderboard %}
+                                {% include 'elements/leaderboard_pill.html' with user=user %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Game IV -->    
+                <div class="d-flex justify-content-center mb-5">
+                    <div class="leaderboard-container position-relative p-4 rounded-4 border shadow-sm">
+                        <h1 class="game-title position-absolute top-0 start-50 translate-middle bg-white px-3">
+                            Game IV
+                        </h1>
+
+                        <div class="d-flex flex-column align-items-center mt-5 pt-3">
+                            {% for user in leaderboard %}
+                                {% include 'elements/leaderboard_pill.html' with user=user %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>

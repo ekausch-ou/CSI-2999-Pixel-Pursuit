@@ -10,8 +10,21 @@ def home(request):
 
 # Leaderboard View
 def leaderboard(request):
-
-    return render(request, "games/leaderboard.html")
+    leaderboard = [
+        {'username': 'Jane', 'score': 1200, 'profile_pic': 'profile.png'},
+        {'username': 'Bob', 'score': 1100, 'profile_pic': 'profile.png'},
+        {'username': 'John', 'score': 1000, 'profile_pic': 'profile.png'},
+        {'username': 'David', 'score': 950, 'profile_pic': 'profile.png'},
+        {'username': 'Matt', 'score': 900, 'profile_pic': 'profile.png'},
+    ]
+    
+    leaderboard.sort(key=lambda x: x['score'], reverse=True)
+    for i, user in enumerate(leaderboard, start=1):
+        user['rank'] = i
+    
+    return render(request, 'games/leaderboard.html', {
+        'leaderboard': leaderboard,
+        })
 
 # Achievement Page View
 def achievements(request):

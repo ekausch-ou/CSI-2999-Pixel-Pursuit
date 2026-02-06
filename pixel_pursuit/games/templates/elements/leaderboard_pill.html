@@ -1,0 +1,19 @@
+{% load static %}
+<div class="leaderboard-item shadow-sm p-2 pe-4 mb-2 d-flex flex-row d-flex justify-content-between">
+    <div class="d-flex flex-row align-items-center" style="width: 100px;">
+        <img src="{% static 'assets/' %}{{ user.profile_pic }}" class="profile-pic" alt="{{ user.username }}">
+        <div class="username">{{ user.username }}</div>
+    </div>
+    <div class="score fs-5" style="width: 100px;">{{ user.score }}</div>
+    <div class="rank">
+        {% if user.rank == 1 %}
+            <img src="{% static 'assets/gold.png' %}" alt="1" style="width: 30px;">
+        {% elif user.rank == 2 %}
+            <img src="{% static 'assets/silver.png' %}" alt="2" style="width: 30px;">
+        {% elif user.rank == 3 %}
+            <img src="{% static 'assets/bronze.png' %}" alt="3" style="width: 30px;">
+        {% else %}
+            <p class="d-flex align-items-center justify-content-center m-0 fs-5 fw-bold" style="width: 30px;">{{ user.rank }}</p>
+        {% endif %}
+    </div>
+</div>
