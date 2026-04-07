@@ -1,0 +1,142 @@
+{% load static %}
+
+<html>
+<head>
+    {% include 'elements/includes.html' %}
+    <title>Yahtzee</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'yahtzee/styles.css' %}">
+    <style>
+        
+    </style>
+</head>
+<body class="blue">
+
+    {% include 'elements/navbar.html' with active="yahtzee" %}
+
+    <div class="d-flex flex-column w-100 pt-2 pb-2 blue">
+        <div class="vstack h-100">
+            <div class="container-fluid text-center h-100 pt-3">
+                <div class="row mb-5">
+                    <div class="col-12 col-lg-7 mb-3" style="min-height: 400px;">
+                        <div class="card h-100 dark-blue">
+                            <div class="card-header text-center text-white d-flex justify-content-between align-items-center">
+                                <!-- Rolls left display -->
+                                <h5 class="mb-0 strong">Rolls Left: <span id="rollsLeft">3</span></h5>
+
+                                <h3 class="mb-0">Yahtzee</h3>
+                                <!-- Roll button -->
+                                <button id="rollBtn" type="button" class="btn blue">Roll Dice</button>
+                            </div>
+                            <!-- Dice Container -->
+                            <div id="diceContainer" class="card-body h-100">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-1 mb-3">
+                        <div class="card h-100 dark-blue">
+                            <div class="card-body h-100">
+                                <!-- Dice Tray -->
+                                <div id="diceTray" class="diceTray" style="min-height: 80px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4 mb-3">
+                        <div class="card dark-blue">
+                            <div class="card-header text-center text-white">
+                                <h3>Scorecard</h3>
+                            </div>
+
+                            <div class="card-body blue">
+                                <div class="row">
+
+                                    <!-- Upper Section -->
+                                    <div class="col-md-6">
+                                        <h5 class="text-center">Upper Section</h5>
+                                        <table class="table text-center align-middle">
+                                            <thead>
+                                                <tr>
+                                                    <th>Category</th>
+                                                    <th>Score</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr><td>Ones</td><td><input class="form-control score-input lower-scores" data-category="ones" readonly></td></tr>
+                                                <tr><td>Twos</td><td><input class="form-control score-input lower-scores" data-category="twos" readonly></td></tr>
+                                                <tr><td>Threes</td><td><input class="form-control score-input lower-scores" data-category="threes" readonly></td></tr>
+                                                <tr><td>Fours</td><td><input class="form-control score-input lower-scores" data-category="fours" readonly></td></tr>
+                                                <tr><td>Fives</td><td><input class="form-control score-input lower-scores" data-category="fives" readonly></td></tr>
+                                                <tr><td>Sixes</td><td><input class="form-control score-input lower-scores" data-category="sixes" readonly></td></tr>
+                                                <tr><td>Bonus</td><td><input class="form-control score-input lower-scores" data-category="bonus" readonly></td></tr>
+                                                <tr>
+                                                    <td><strong>Upper Total</strong></td>
+                                                <td id="upperTotal">0</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <!-- Lower Section -->
+                                    <div class="col-md-6">
+                                        <h5 class="text-center">Lower Section</h5>
+                                        <table class="table text-center align-middle">
+                                            <thead>
+                                                <tr>
+                                                    <th>Category</th>
+                                                    <th>Score</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr><td>3 of a Kind</td><td><input class="form-control score-input" data-category="ok3" readonly></td></tr>
+                                                <tr><td>4 of a Kind</td><td><input class="form-control score-input" data-category="ok4" readonly></td></tr>
+                                                <tr><td>Full House</td><td><input class="form-control score-input" data-category="fh" readonly></td></tr>
+                                                <tr><td>Small Straight</td><td><input class="form-control score-input" data-category="ss" readonly></td></tr>
+                                                <tr><td>Large Straight</td><td><input class="form-control score-input" data-category="ls" readonly></td></tr>
+                                                <tr><td>Yahtzee</td><td><input class="form-control score-input" data-category="yahtzee" readonly></td></tr>
+                                                <tr><td>Chance</td><td><input class="form-control score-input" data-category="chance" readonly></td></tr>
+                                                <tr>
+                                                    <td><strong>Lower Total</strong></td>
+                                                    <td id="lowerTotal">0</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                                <!-- Grand Total -->
+                                <div class="row mt-4">
+                                    <div class="col text-center">
+                                        <h4>Grand Total: <span id="grandTotal">0</span></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- JS logic -->
+                    <script type="module" src="{% static 'yahtzee/game.js' %}"></script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Game Modal -->
+    <div class="modal fade" id="endGameModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content dark-blue text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title">Game Over</h5>
+                </div>
+                <div class="modal-body text-center">
+                    <p>Your final score is <strong id="finalScore">0</strong></p>
+                    <p>Do you want to start a new game?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn blue" id="newGameBtn">New Game</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'elements/achieve_message.html' %}
+</body>
+</html>

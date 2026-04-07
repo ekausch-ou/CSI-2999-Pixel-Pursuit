@@ -1,0 +1,256 @@
+{
+  "fighters": [
+    {
+      "name": "Apricot",
+      "nickname": "The Pit Punisher",
+      "image": "/static/food_fight/assets/apricot.png",
+      "header": "A wild Apricot appeared! Ready to pit your skills against it?",
+      "tagline": "Juicy and sweet, don't underestimate its punch!",
+      "attacks": [
+        {"name": "Pit Punch", "flavor": "Apricot swings its pit like a fist!", "damage": 10},
+        {"name": "Fruit Slam", "flavor": "Apricot crashes down with fruity force!", "damage": 12},
+        {"name": "Juice Splash", "flavor": "A burst of apricot juice hits you!", "damage": 8}
+      ]
+    },
+    {
+      "name": "Bell Pepper",
+      "nickname": "The Ring Ringer",
+      "image": "/static/food_fight/assets/bell pepper.png",
+      "header": "A wild Bell Pepper rang in! Things are about to get spicy!",
+      "tagline": "Crunchy, colorful, and ready to fight.",
+      "attacks": [
+        {"name": "Pepper Punch", "flavor": "Bell Pepper slaps with a veggie-packed swing!", "damage": 10},
+        {"name": "Spicy Burst", "flavor": "A zesty flavor blast hits you!", "damage": 12},
+        {"name": "Crunch Slam", "flavor": "A heavy slam with its firm body!", "damage": 8}
+      ]
+    },
+    {
+      "name": "Blueberry",
+      "nickname": "The Berry Bruiser",
+      "image": "/static/food_fight/assets/blueberry.png",
+      "header": "A plump Blueberry bounces by! Don’t let it berry you alive!",
+      "tagline": "Small but packs a punch!",
+      "attacks": [
+        {"name": "Berry Bash", "flavor": "Blueberry bounces into the enemy!", "damage": 9},
+        {"name": "Juice Squirt", "flavor": "A squirt of blueberry juice hits the foe!", "damage": 8},
+        {"name": "Fruit Roll", "flavor": "It rolls forward with unstoppable force!", "damage": 11}
+      ]
+    },
+    {
+      "name": "Broccoli",
+      "nickname": "The Green Machine", 
+      "image": "/static/food_fight/assets/broccoli.png",
+      "header": "A brave Broccoli sprouts up! Time to stalk it down!",
+      "tagline": "A crunchy powerhouse with a green thumb.",
+      "attacks": [
+        {"name": "Floret Smash", "flavor": "Broccoli swings its florets down!", "damage": 11},
+        {"name": "Stem Strike", "flavor": "A stiff stem jab catches you off guard!", "damage": 10},
+        {"name": "Veggie Whirl", "flavor": "Spins rapidly, knocking you aside!", "damage": 9}
+      ]
+    },
+    {
+      "name": "Chili",
+      "nickname": "The Heatwave Hero",
+      "image": "/static/food_fight/assets/chili.png",
+      "header": "A fiery Chili bursts forth! Things are heating up!",
+      "tagline": "Too hot to handle!",
+      "attacks": [
+        {"name": "Flame Burst", "flavor": "Chili spews a fiery flame!", "damage": 14},
+        {"name": "Spice Strike", "flavor": "A quick punch with a spicy kick!", "damage": 11},
+        {"name": "Heat Wave", "flavor": "A wave of heat scorches everything in front!", "damage": 12}
+      ]
+    },
+    {
+      "name": "Eggplant",
+      "nickname": "The Midnight Masher",
+      "image": "/static/food_fight/assets/eggplant.png",
+      "header": "A sly Eggplant slinks in! Watch out for its peel-out attacks!",
+      "tagline": "Purple, smooth, and unexpectedly sneaky.",
+      "attacks": [
+        {"name": "Peel Strike", "flavor": "Eggplant peels back and hits hard!", "damage": 11},
+        {"name": "Veggie Lash", "flavor": "A whip of eggplant leaves cuts the foe!", "damage": 10},
+        {"name": "Nightshade Slam", "flavor": "A powerful downward smash from above!", "damage": 12}
+      ]
+    },
+    {
+      "name": "Guava",
+      "nickname": "The Tropical Terror",
+      "image": "/static/food_fight/assets/guava.png",
+      "header": "A tropical Guava appears! Let’s make it pulp-fiction!",
+      "tagline": "Exotic and tough on the outside.",
+      "attacks": [
+        {"name": "Tropical Toss", "flavor": "Guava hurls itself like a beach ball!", "damage": 10},
+        {"name": "Pulp Punch", "flavor": "Smashes you with juicy force!", "damage": 11},
+        {"name": "Seed Shot", "flavor": "Tiny seeds pepper the enemy!", "damage": 9}
+      ]
+    },
+    {
+      "name": "Jalapeno",
+      "nickname": "The Scoville Slugger",
+      "image": "/static/food_fight/assets/jalapeno.png",
+      "header": "A hot Jalapeno stomps in! Things are about to spice up!",
+      "tagline": "Hot-headed and quick to strike.",
+      "attacks": [
+        {"name": "Spice Jab", "flavor": "A quick, fiery poke with a hot punch!", "damage": 12},
+        {"name": "Heat Wave", "flavor": "Unleashes a wave of scorching heat!", "damage": 14},
+        {"name": "Pepper Smash", "flavor": "Smashes foes with spicy power!", "damage": 11}
+      ]
+    },
+    {
+      "name": "Kiwi",
+      "nickname": "The Fuzzy Fury",
+      "image": "/static/food_fight/assets/kiwi.png",
+      "header": "A fuzzy Kiwi hops in! Don’t let it kiwi-dnap the battle!",
+      "tagline": "Small, fuzzy, and deceptively strong.",
+      "attacks": [
+        {"name": "Fuzzy Flick", "flavor": "Kiwi flicks its fuzzy exterior at the foe!", "damage": 9},
+        {"name": "Tart Toss", "flavor": "A tangy throw that surprises the enemy!", "damage": 10},
+        {"name": "Seed Shot", "flavor": "Tiny seeds fire off like bullets!", "damage": 11}
+      ]
+    },
+    {
+      "name": "Mango",
+      "nickname": "Macho Mango Madness",
+      "image": "/static/food_fight/assets/mango.png",
+      "header": "A succulent Mango swaggers in! Ready to peel its strength?",
+      "tagline": "Sweet and smooth with hidden power.",
+      "attacks": [
+        {"name": "Mango Slam", "flavor": "A heavy slam dripping with juice!", "damage": 12},
+        {"name": "Fruit Spin", "flavor": "Mango spins to knock back foes!", "damage": 10},
+        {"name": "Tropical Toss", "flavor": "Hurls itself like a tropical projectile!", "damage": 11}
+      ]
+    },
+    {
+      "name": "Onion",
+      "nickname": "The Crying Crusher",
+      "image": "/static/food_fight/assets/onion.png",
+      "header": "A tearful Onion slinks in! Prepare for layers of trouble!",
+      "tagline": "Cry if you must, it won’t stop attacking.",
+      "attacks": [
+        {"name": "Tear Strike", "flavor": "A strike that brings tears to your eyes!", "damage": 10},
+        {"name": "Layer Slam", "flavor": "Peels back layers for a crushing hit!", "damage": 12},
+        {"name": "Stink Blast", "flavor": "A pungent smell stuns you!", "damage": 9}
+      ]
+    },
+    {
+      "name": "Orange",
+      "nickname": "The Citrus Slammer", 
+      "image": "/static/food_fight/assets/orange.png",
+      "header": "A zesty Orange rolls in! Time to peel back its defense!",
+      "tagline": "Bright, zesty, and always rolling forward.",
+      "attacks": [
+        {"name": "Citrus Strike", "flavor": "Orange slaps with a tangy punch!", "damage": 11},
+        {"name": "Juice Blast", "flavor": "Squirts a stream of orange juice!", "damage": 9},
+        {"name": "Peel Slam", "flavor": "Uses its peel to smack the enemy!", "damage": 10}
+      ]
+    },
+    {
+      "name": "Papaya",
+      "nickname": "The Pulp Pulverizer",
+      "image": "/static/food_fight/assets/papaya.png",
+      "header": "A tropical Papaya floats by! Can you handle the pulp?",
+      "tagline": "Soft on the outside, powerful inside.",
+      "attacks": [
+        {"name": "Pulp Punch", "flavor": "Papaya punches with juicy force!", "damage": 10},
+        {"name": "Seed Blast", "flavor": "Seeds fly in every direction!", "damage": 9},
+        {"name": "Tropical Slam", "flavor": "Papaya smashes down like a mini tropical storm!", "damage": 12}
+      ]
+    },
+    {
+      "name": "Pear",
+      "nickname": "The Core Crusher",
+      "image": "/static/food_fight/assets/pear.png",
+      "header": "A plump Pear appears! Don’t let it pair up against you!",
+      "tagline": "Soft, sweet, and surprisingly strong.",
+      "attacks": [
+        {"name": "Core Smash", "flavor": "Pear smashes with its hard core!", "damage": 11},
+        {"name": "Juice Squirt", "flavor": "Pear squirts juice to slow foes!", "damage": 9},
+        {"name": "Leaf Strike", "flavor": "Hits with a swift leaf swipe!", "damage": 10}
+      ]
+    },
+    {
+      "name": "Pineapple",
+      "nickname": "The Spiked Destroyer",
+      "image": "/static/food_fight/assets/pineapple.png",
+      "header": "A spiky Pineapple bursts in! Can you weather its prickly nature?",
+      "tagline": "Spiky, tough, and not to be underestimated.",
+      "attacks": [
+        {"name": "Spiky Slam", "flavor": "Thrusts its spikes into the foe!", "damage": 13},
+        {"name": "Tropical Toss", "flavor": "Rolls forward like a mini tropical storm!", "damage": 11},
+        {"name": "Juice Splash", "flavor": "A sticky splash hits hard!", "damage": 10}
+      ]
+    },
+    {
+      "name": "Pumpkin",
+      "nickname": "The Gourd Gladiator",
+      "image": "/static/food_fight/assets/pumpkin.png",
+      "header": "A round Pumpkin rolls forward! It’s gourd to go!",
+      "tagline": "Heavy, round, and unstoppable once rolling.",
+      "attacks": [
+        {"name": "Pumpkin Roll", "flavor": "Rolls into the enemy with crushing force!", "damage": 12},
+        {"name": "Seed Shot", "flavor": "Fires seeds like rapid projectiles!", "damage": 10},
+        {"name": "Squash Slam", "flavor": "Leaps up and squashes down hard!", "damage": 13}
+      ]
+    },
+    {
+      "name": "Radish",
+      "nickname": "The Root Rumbler",
+      "image": "/static/food_fight/assets/radish.png",
+      "header": "A feisty Radish springs up! Don’t get root-ed out!",
+      "tagline": "Small, sharp, and full of bite.",
+      "attacks": [
+        {"name": "Root Jab", "flavor": "Radish jabs forward with its root!", "damage": 10},
+        {"name": "Spicy Kick", "flavor": "A sharp kick with a peppery sting!", "damage": 11},
+        {"name": "Dirt Toss", "flavor": "Throws dirt to blind you!", "damage": 9}
+      ]
+    },
+    {
+      "name": "Raspberry",
+      "nickname": "The Tart Terror", 
+      "image": "/static/food_fight/assets/raspberry.png",
+      "header": "A tart Raspberry pops by!",
+      "tagline": "Don’t let it jam you!",
+      "attacks": [
+        {"name": "Tart Toss", "flavor": "Launches itself like a tiny missile!", "damage": 9},
+        {"name": "Berry Barrage", "flavor": "Multiple berries rain down!", "damage": 12},
+        {"name": "Seed Shot", "flavor": "Seeds fire rapidly at the enemy!", "damage": 8}
+      ]
+    },
+    {
+      "name": "Starfruit",
+      "nickname": "The Cosmic Cutter",
+      "image": "/static/food_fight/assets/starfruit.png",
+      "header": "A shiny Starfruit twinkles in! It’s ready to star in this fight!",
+      "tagline": "Bright, flashy, and sharp.",
+      "attacks": [
+        {"name": "Star Strike", "flavor": "Slices forward with sharp edges!", "damage": 11},
+        {"name": "Twinkle Toss", "flavor": "Spins and launches itself!", "damage": 10},
+        {"name": "Radiant Burst", "flavor": "A flash of light blinds the foe!", "damage": 9}
+      ]
+    },
+    {
+      "name": "Tomato",
+      "nickname": "The Saucy Slugger",
+      "image": "/static/food_fight/assets/tomato.png",
+      "header": "A ripe Tomato bounces in! Don’t let it ketchup to you!",
+      "tagline": "Juicy, messy, and relentless.",
+      "attacks": [
+        {"name": "Tomato Toss", "flavor": "Throws itself in a juicy splat!", "damage": 10},
+        {"name": "Sauce Splash", "flavor": "Splashes sauce everywhere!", "damage": 9},
+        {"name": "Seed Spray", "flavor": "Seeds shoot out rapidly!", "damage": 11}
+      ]
+    },
+    {
+      "name": "Turnip",
+      "nickname": "The Dirt Dominator",
+      "image": "/static/food_fight/assets/turnip.png",
+      "header": "A stubborn Turnip pops up! Prepare for a root-ine battle!",
+      "tagline": "Tough, grounded, and unshakable.",
+      "attacks": [
+        {"name": "Root Smash", "flavor": "Slams with underground force!", "damage": 12},
+        {"name": "Leaf Lash", "flavor": "Whips with leafy greens!", "damage": 10},
+        {"name": "Dirt Burst", "flavor": "Bursts from the ground suddenly!", "damage": 11}
+      ]
+    }
+  ]
+}

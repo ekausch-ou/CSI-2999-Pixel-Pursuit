@@ -1,0 +1,36 @@
+.confetti-container {
+  position: fixed;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.confetti-container.left {
+  left: 0;
+}
+
+.confetti-container.right {
+  right: 0;
+}
+
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 12px;
+  opacity: 0.9;
+  animation: confettiFly 2s ease-out forwards;
+}
+
+@keyframes confettiFly {
+  0% {
+    transform: translate(0,0) rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(var(--x), var(--y)) rotate(720deg);
+    opacity: 0;
+  }
+}

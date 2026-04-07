@@ -1,0 +1,28 @@
+{% load static %}
+<style>
+    .achievement-toast {
+        background: #B0E0E2;
+        padding: 15px 20px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        max-width: 600px;
+        font-family: sans-serif;
+        text-align: center;
+    }
+
+    .achievement-toast.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+<link rel="stylesheet" href="{% static 'css/confetti.css' %}">
+
+
+<div class="confetti-container left"></div>
+<div class="confetti-container right"></div>
+
+<div id="achievementToastContainer" style="position: fixed; top: 100px; left: 50%; transform: translateX(-50%); z-index: 9999;"></div>

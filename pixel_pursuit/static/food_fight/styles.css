@@ -1,0 +1,131 @@
+/* Arena Styling */
+.arena-bg {
+    background: linear-gradient(to bottom, #f7e7c6, #d8a86d);
+    min-height: 100vh;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+.canopy {
+    background: repeating-linear-gradient(
+        45deg,
+        #d32f2f,
+        #d32f2f 20px,
+        #fff 20px,
+        #fff 40px
+    );
+
+    border-bottom: none;
+    box-shadow: 0 8px 14px rgba(0,0,0,0.25);
+    border-top-left-radius: 50rem;
+    border-top-right-radius: 50rem;
+}
+.market-arena {
+    border-color: #8b5a2b;
+}
+.counter {
+    background-color: #9c6b3b;
+}
+.crate {
+    background-color: #8b5a2b;
+}
+#turn-toast-container {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    min-width: 50%;
+    min-height: 30%;
+    pointer-events: none
+}
+.toast {
+    background-color: #8b592b96;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100px;
+}
+
+/* HP bar Styling */
+.hp-bar {
+    width: 90%;
+    height: 12px;
+    background-color: #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.hp-fill {
+    height: 100%;
+    width: 100%; /* controlled via JS */
+    background: linear-gradient(to right, #4caf50, #81c784);
+    transition: width 0.3s ease;
+}
+
+/* Fighter Styling */
+.fighter {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.fighter-img {
+    width: 100%;
+    height: auto;
+    animation: float 2.5s ease-in-out infinite; /* Bobbing Motion */
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+#playerCardsContainer {
+    max-height: 80%;
+    z-index: 15;
+}
+
+/* Hide during selection */
+.hidden {
+    display: none !important; 
+}
+
+/* Round Tracker */
+.battle-tracker {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Mobile: horizontal stack */
+@media (max-width: 768px) {
+    .battle-tracker {
+        flex-direction: row;
+        flex-wrap: wrap; 
+    }
+}
+.circle {
+    width: 60px;
+    height: auto;
+    fill: #f7e7c6;
+}
+.circle-mobile {
+    width: 40px;
+    height: auto;
+    fill: #f7e7c6;
+}
+.circle-complete {
+    fill: #d32f2f;
+}
+
+/* Fighter Death Fade Out */
+.fade-out {
+    animation: fadeOut 1s forwards; 
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}

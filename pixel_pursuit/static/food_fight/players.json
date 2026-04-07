@@ -1,0 +1,114 @@
+{
+  "players": [
+    {
+      "name": "Shark",
+      "nickname": "The Ocean Menace",
+      "image": "/static/food_fight/assets/shark.png",
+      "header": "A fierce Shark emerges! Ready to face its bite?",
+      "tagline": "Swift, deadly, and always circling.",
+      "attacks": [
+        {
+          "name": "Bite Strike",
+          "flavor": "Shark lunges forward with razor-sharp teeth!",
+          "damage": 12,
+          "cost": 15
+        },
+        {
+          "name": "Fin Slash",
+          "flavor": "A slicing fin attack cuts through the air!",
+          "damage": 10,
+          "cost": 12
+        },
+        {
+          "name": "Tidal Rush",
+          "flavor": "A surge of water propels Shark into its target!",
+          "damage": 20,
+          "cost": 35
+        }
+      ],
+      "ability": {
+        "type": "heal",
+        "name": "Blood Frenzy",
+        "heal": 30,
+        "cost": 25
+      }
+    },
+
+    {
+      "name": "Tiger",
+      "nickname": "The Jungle Stalker",
+      "image": "/static/food_fight/assets/tiger.png",
+      "header": "A stealthy Tiger prowls in! Can you survive the hunt?",
+      "tagline": "Silent, swift, and ferociously strong.",
+      "attacks": [
+        {
+          "name": "Claw Slash",
+          "flavor": "Tiger strikes with razor-sharp claws!",
+          "damage": 14,
+          "cost": 14
+        },
+        {
+          "name": "Pounce Attack",
+          "flavor": "A sudden leap knocks the opponent down!",
+          "damage": 20,
+          "cost": 30
+        },
+        {
+          "name": "Savage Combo",
+          "flavor": "A flurry of relentless strikes!",
+          "damage": 18,
+          "cost": 28
+        }
+      ],
+      "passive": {
+        "type": "low_defense",
+        "note": "Takes +20% damage"
+      },
+      "ability": {
+        "type": "evade",
+        "name": "Evasive Guard",
+        "reduction": 0.4,
+        "bonus": "next_attack_boost",
+        "cost": 15
+      }
+    },
+
+    {
+      "name": "Turtle",
+      "nickname": "The Shell Defender",
+      "image": "/static/food_fight/assets/turtle.png",
+      "header": "A sturdy Turtle blocks your path! Can you crack its defense?",
+      "tagline": "Slow but nearly unstoppable.",
+      "attacks": [
+        {
+          "name": "Shell Bash",
+          "flavor": "Turtle slams forward with its hard shell!",
+          "damage": 9,
+          "cost": 10
+        },
+        {
+          "name": "Spin Strike",
+          "flavor": "A spinning shell attack knocks foes away!",
+          "damage": 8,
+          "cost": 10
+        },
+        {
+          "name": "Fortress Slam",
+          "flavor": "Turtle charges with full defensive force!",
+          "damage": 16,
+          "cost": 30
+        }
+      ],
+      "passive": {
+        "type": "high_defense",
+        "reduction": 0.35
+      },
+      "ability": {
+        "type": "defend",
+        "name": "Harden Shell",
+        "reduction": 0.7,
+        "cost": 15
+      }
+    }
+  ]
+}

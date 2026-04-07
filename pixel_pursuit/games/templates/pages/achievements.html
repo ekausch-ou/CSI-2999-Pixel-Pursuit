@@ -1,0 +1,30 @@
+{% load static %}
+
+<html>
+    <head>
+        {% include 'elements/includes.html' %}
+        <title>Achievements</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+<body>
+    
+{% include 'elements/navbar.html' with active="home" %}
+<body>
+    <div class="d-flex flex-column pt-2 pb-2">
+        <div class="vstack h-100">
+            <div class="container-fluid text-center h-100" style="max-width: 70%;">
+            {% for game_name, achievements in achievements.items %}
+                <div class="row">
+                    <h1 class="display-4">{{ game_name }}</h1>
+                </div>
+                <div class="row">
+                    {% for achievement in achievements %}
+                        {% include 'elements/achievement.html' with achieve=achievement %}
+                    {% endfor %}
+                </div>
+                <hr>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
