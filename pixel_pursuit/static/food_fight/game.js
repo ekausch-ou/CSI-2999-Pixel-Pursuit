@@ -50,6 +50,12 @@ fetch("/static/food_fight/players.json")
         showPlayerSelection()
     })
 
+
+const audio = new Audio("/static/food_fight/assets/background.oog");
+audio.volume = 0.5;
+audio.loop = true;
+audio.play();
+
 function showPlayerSelection() {
     const container = document.getElementById("playerCardsContainer")
     container.innerHTML = ""
@@ -286,6 +292,7 @@ function enemyTurn() {
     player_health -= damage
     if (player_health <= 0) {
         player_health = 0;
+        document.getElementById("playerSprite").src = '/static/food_fight/assets/smoke.png'
         document.querySelector(".fighter.player").classList.add("fade-out")
         updateLog(`${currentOpponent.name} hit you for ${damage} damage! You were defeated! Game Over.`);
         updateHealthBars();
