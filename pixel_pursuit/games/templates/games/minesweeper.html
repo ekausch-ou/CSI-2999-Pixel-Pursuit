@@ -1,0 +1,25 @@
+{% load static %}
+
+<head>
+    {% include 'elements/includes.html' %}
+    <title>Minesweeper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+</head>
+    
+{% include 'elements/navbar.html' with active="home" %}
+<body onload="burstConfetti();">
+    <div class="confetti-container left"></div>
+    <div class="confetti-container right"></div>
+    <div class="d-flex flex-column pt-2 pb-2 h-100" style="background-color: #fcf1f3;">
+        <div class="vstack h-100">
+            <div class="container-fluid text-center h-100" style="max-width: 70%;">
+                <div class="row mb-5">
+                    <h2 class="mb-4">Minesweeper</h2>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="module" src="{% static 'minesweeper/game.js' %}"></script>
+</body>

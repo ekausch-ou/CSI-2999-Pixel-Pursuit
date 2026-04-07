@@ -1,0 +1,167 @@
+{% load static %}
+
+<html>
+<head>
+    {% include 'elements/includes.html' %}
+    <title>Food Fighters</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'food_fight/styles.css' %}">
+</head>
+<body class="arena-bg">
+
+    {% include 'elements/navbar.html' with active="foodfighters" %}
+
+    <div class="d-flex flex-column w-100" style="height: 90vh; overflow-y: auto; scrollbar-width: none;">
+        <div class="vstack h-100">
+            <div class="container-fluid text-center h-100 pt-3">
+                <div class="row mb-5 h-100">
+                    <!-- Tracker -->
+                    <div class="col-12 col-lg-1 mb-2 d-md-none d-md-block" style="min-height: 50px;">
+                        <div class="card crate">
+                            <div class="card-header">
+                                <strong>Battle Tracker</strong>
+                            </div>
+                            <div class="card-body d-flex justify-content-between battle-tracker g-3 crate">
+                                <svg id="circle-mobile-1" class="circle-mobile" viewBox="0 -960 960 960" fill="#1f1f1f"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Zm-20 200h80v-400H380v80h80v320Z"/></svg>
+                                <svg id="circle-mobile-2"  class="circle-mobile" viewBox="0 -960 960 960" fill="#1f1f1f"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320ZM360-280h240v-80H440v-80h80q33 0 56.5-23.5T600-520v-80q0-33-23.5-56.5T520-680H360v80h160v80h-80q-33 0-56.5 23.5T360-440v160Z"/></svg>
+                                <svg id="circle-mobile-3"  class="circle-mobile" viewBox="0 -960 960 960" fill="#1f1f1f"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320ZM360-280h160q33 0 56.5-23.5T600-360v-60q0-26-17-43t-43-17q26 0 43-17t17-43v-60q0-33-23.5-56.5T520-680H360v80h160v80h-80v80h80v80H360v80Z"/></svg>
+                                <svg id="circle-mobile-4"  class="circle-mobile" viewBox="0 -960 960 960" fill="#1f1f1f"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Zm40 200h80v-400h-80v160h-80v-160h-80v240h160v160Z"/></svg>
+                                <svg id="circle-mobile-5"  class="circle-mobile" viewBox="0 -960 960 960" fill="#1f1f1f"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320ZM360-280h160q33 0 56.5-23.5T600-360v-80q0-33-23.5-56.5T520-520h-80v-80h160v-80H360v240h160v80H360v80Z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Canopy -->
+                    <div class="col-12 col-lg-11 h-100">
+                        <div class="card market-arena border-5 h-100 d-flex flex-column" style="background-color: #ffffff00;">
+                            <div class="card-header d-flex justify-content-center align-items-center canopy">
+                                <div class="card rounded-pill m-2">
+                                    <div class="card-body ps-4 pe-4 fs-3">
+                                        Food Fighters
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Battle Space -->
+                            <div class="battle-stage flex-grow-1">
+                                <!-- Enemy (top right) -->
+                                <div class="d-flex justify-content-end flex-fill">
+                                    <div class="fighter enemy hidden text-center mt-3 me-3">
+                                        <h5 id="enemyName" class="mb-1"></h5>
+
+                                        <div class="hp-bar mb-2">
+                                            <div id="enemyHP" class="hp-fill"></div>
+                                        </div>
+
+                                        <img id="enemySprite" class="fighter-img" src="">
+                                    </div>
+                                </div>
+
+                                <!-- Player (bottom left) -->
+                                <div class="d-flex justify-content-start flex-fill">
+                                    <div class="fighter player hidden text-center ms-3 mb-3">
+                                        <h5 id="playerName" class="mb-1"></h5>
+                                        
+                                        <img id="playerSprite" class="fighter-img" src="">
+
+                                        <div class="hp-bar mb-2">
+                                            <div id="playerHP" class="hp-fill"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Player Selection -->
+                                <div id="playerCardsWrapper">
+                                    <div id="playerCardsContainer" class="d-flex justify-content-center flex-fill mb-5 mt-5">
+                                        <!-- Cards injected here via JS -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Counter -->
+                            <div class="card-footer counter">
+                                <div class="row h-100">
+                                    <div class="col-12 col-lg-6 p-1">                                    
+                                        <!-- Actions -->
+                                        <div class="card crate flex-grow">
+                                            <div class="card-header">
+                                                <h5 id="actionsTitle" class="p-0 m-0">Actions (⚡)</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row g-2">
+                                                    <div class="col-6">
+                                                        <button class="btn btn-primary move-btn w-100 h-100 attack" data-move="1" disabled>Attack 1</button>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <button class="btn btn-danger move-btn w-100 h-100 attack" data-move="2" disabled>Attack 2</button>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <button class="btn btn-warning move-btn w-100 h-100 attack" data-move="3" disabled>Attack 3</button>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <button class="btn btn-success move-btn w-100 h-100 special" disabled>Special</button>
+                                                        <button class="btn btn-success move-btn w-100 h-100 recharge hidden" disabled>Recharge +30⚡⚡</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Log -->
+                                    <div class="col-12 col-lg-6 p-1">
+                                        <div class="card crate flex-grow">
+                                            <div class="card-header">
+                                                <h5 class="p-0 m-0">Market Log</h5>
+                                            </div>
+
+                                            <div class="card-body p-0">
+                                                <textarea id="battleLog" class="form-control border border-0" rows="4" disabled style="background-color: #8b5a2b;">
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tracker -->
+                    <div class="col-12 col-lg-1 mb-2 d-none d-lg-block" style="height: 100%;">
+                        <div class="card crate h-100">
+                            <div class="card-header">
+                                <strong>Battle Tracker</strong>
+                            </div>
+                            <div class="card-body d-flex flex-column justify-content-around align-items-center battle-tracker g-3 crate h-100">
+                                <svg id="circle-5" class="circle" viewBox="0 -960 960 960" fill="#1f1f1f"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320ZM360-280h160q33 0 56.5-23.5T600-360v-80q0-33-23.5-56.5T520-520h-80v-80h160v-80H360v240h160v80H360v80Z"/></svg>
+                                <svg id="circle-4" class="circle" viewBox="0 -960 960 960" fill="#1f1f1f"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Zm40 200h80v-400h-80v160h-80v-160h-80v240h160v160Z"/></svg>
+                                <svg id="circle-3" class="circle" viewBox="0 -960 960 960" fill="#1f1f1f"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320ZM360-280h160q33 0 56.5-23.5T600-360v-60q0-26-17-43t-43-17q26 0 43-17t17-43v-60q0-33-23.5-56.5T520-680H360v80h160v80h-80v80h80v80H360v80Z"/></svg>
+                                <svg id="circle-2" class="circle" viewBox="0 -960 960 960" fill="#1f1f1f"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320ZM360-280h240v-80H440v-80h80q33 0 56.5-23.5T600-520v-80q0-33-23.5-56.5T520-680H360v80h160v80h-80q-33 0-56.5 23.5T360-440v160Z"/></svg>
+                                <svg id="circle-1" class="circle" viewBox="0 -960 960 960" fill="#1f1f1f"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Zm-20 200h80v-400H380v80h80v320Z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="module" src="{% static 'food_fight/game.js' %}"></script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Turn Message Toast -->
+    <div id="turn-toast-container"></div>
+    <!-- End Game Modal -->
+    <div class="modal fade" id="endGameModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centere">
+            <div class="modal-content battle-cardd crate text-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title">Battle Over</h5>
+                </div>
+                <div class="modal-body text-center">
+                    <p id="battleResult"></p>
+                    <p>Play again?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="newBattleBtn">New Battle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'elements/achieve_message.html' %}
+</body>
+</html>
