@@ -28,6 +28,10 @@ let enemies_defeated = 0
 let isDefending = false
 let nextAttackBoost = false
 
+const audio = new Audio("/static/food_fight/assets/background.ogg");
+audio.volume = 0.1;
+audio.loop = true;
+
 // ==============================
 // FETCH FIGHTERS
 // ==============================
@@ -78,6 +82,8 @@ function selectPlayer(player) {
         ability: player.ability,
         health: PLAYER_HEALTH
     }
+
+    audio.play();
 
     player_energy = MAX_ENERGY
     player_health = PLAYER_HEALTH
@@ -161,6 +167,9 @@ function spawnOpponent() {
     // Update UI
     document.getElementById("enemyName").innerText = currentOpponent.nickname
     document.getElementById("enemySprite").src = currentOpponent.image
+    
+    document.querySelector(".fighter.player").classList.remove("fade-out")
+    document.querySelector(".fighter.enemy").classList.remove("fade-out")
     updateLog(currentOpponent.header)
     updateHealthBars()
 }
@@ -264,7 +273,7 @@ function enemyTurn() {
 
     const attack = currentOpponent.attacks[Math.floor(Math.random() * currentOpponent.attacks.length)];
     let damage = attack.damage + Math.floor(Math.random() * 5);
-    damage = 11000
+    
     // Turtle: Passive damage shield
     if (currentPlayer.passive?.type === "high_defense") {
         damage = Math.floor(damage * (1 - currentPlayer.passive.reduction))
@@ -286,6 +295,7 @@ function enemyTurn() {
     player_health -= damage
     if (player_health <= 0) {
         player_health = 0;
+        document.getElementById("playerSprite").src = '/static/food_fight/assets/smoke.png'
         document.querySelector(".fighter.player").classList.add("fade-out")
         updateLog(`${currentOpponent.name} hit you for ${damage} damage! You were defeated! Game Over.`);
         updateHealthBars();
@@ -454,6 +464,7 @@ function showTurnMessage(message) {
 
 function gameEnd() {
     // Calculate score
+    audio.pause();
     const score = (enemies_defeated * ENEMY_POINTS) + (player_health * HEALTH_POINTS) + (player_energy * ENERGY_POINTS);
     submitScore("Food Fighter", score); //api call
     checkAchievements() 

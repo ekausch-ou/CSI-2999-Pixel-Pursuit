@@ -25,7 +25,7 @@
                 </div>
                 <div class="row">
                     <!-- Game 1 -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-3">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 pb-3">
                         <div class="card bg-dark text-white h-100">
                             <img src="{% static 'assets/blank.png' %}" class="card-img" alt="image">
                             <div class="card-img-overlay">
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <!-- Game 2 -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-3">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 pb-3">
                         <div class="card bg-dark text-white h-100">
                             <img src="{% static 'assets/blank.png' %}" class="card-img" alt="image">
                             <div class="card-img-overlay">
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <!-- Game 3 -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-3">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 pb-3">
                         <div class="card bg-dark text-white h-100">
                             <img src="{% static 'assets/blank.png' %}" class="card-img" alt="image">
                             <div class="card-img-overlay">
@@ -52,18 +52,16 @@
                         </div>
                     </div>
                     <!-- Game 4 -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-3">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 pb-3">
                         <div class="card bg-dark text-white h-100">
-                            <img src="{% static 'assets/blank.png' %}" class="card-img" alt="image">
-                            <div class="card-img-overlay">
-                                <a href="" class="card-title stretched-link text-decoration-none text-white fs-1">Next Move</a>
+                            <img src="{% static 'assets/chicken.png' %}" class="card-img" alt="image">
+                            <div class="card-img-overlay ps-1 pe-1">
+                                <a href="{% url 'plucking_chicken' %}" class="card-title stretched-link text-decoration-none text-white fs-1">Plucking Chicken</a>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
                     <!-- Game 5 -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-3">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 pb-3">
                         <div class="card bg-dark text-white h-100">
                             <img src="{% static 'assets/yahtzee.png' %}" class="card-img" alt="image">
                             <div class="card-img-overlay">
@@ -72,29 +70,11 @@
                         </div>
                     </div>
                     <!-- Game 6 -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-3">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 pb-3">
                         <div class="card bg-dark text-white h-100">
                             <img src="{% static 'assets/food_fight.png' %}" class="card-img" alt="image">
                             <div class="card-img-overlay">
                                 <a href="{% url 'food_fight' %}" class="card-title stretched-link text-decoration-none text-white fs-1">Food Fighters</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Game 7 -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-3">
-                        <div class="card bg-dark text-white h-100">
-                            <img src="{% static 'assets/blank.png' %}" class="card-img" alt="image">
-                            <div class="card-img-overlay">
-                                <a href="{% url 'game_minesweeper' %}" class="card-title stretched-link text-decoration-none text-white fs-1">Minesweeper</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Game 8 -->
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-3">
-                        <div class="card bg-dark text-white h-100">
-                            <img src="{% static 'assets/blank.png' %}" class="card-img" alt="image">
-                            <div class="card-img-overlay">
-                                <a href="" class="card-title stretched-link text-decoration-none text-white fs-1">Next Move</a>
                             </div>
                         </div>
                     </div>

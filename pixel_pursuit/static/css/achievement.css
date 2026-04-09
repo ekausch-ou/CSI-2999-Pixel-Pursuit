@@ -34,3 +34,22 @@
     opacity: 0;
   }
 }
+
+.achievement-toast {
+    background: #B0E0E2;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    max-width: 600px;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.achievement-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}

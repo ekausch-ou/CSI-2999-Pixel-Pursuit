@@ -39,10 +39,10 @@ def game_minesweeper(request):
 
     return render(request, "games/minesweeper.html")
 
-# Next Move Game View
-def game_minesweeper(request):
+# Plucking Chicken Game View
+def plucking_chicken(request):
 
-    return render(request, "games/minesweeper.html")
+    return render(request, "games/plucking_chicken.html")
 
 # Leaderboard View
 def leaderboard(request):

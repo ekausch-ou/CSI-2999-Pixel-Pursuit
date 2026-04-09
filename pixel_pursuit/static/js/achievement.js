@@ -1,12 +1,12 @@
 export function burstConfetti() {
-    playConfettiSound(); // play sound when burst starts
+    playConfettiSound();
     createBurst(document.querySelector(".confetti-container.left"), 1);
     createBurst(document.querySelector(".confetti-container.right"), -1);
 }
 
 function playConfettiSound() {
-    const audio = new Audio("/static/sounds/achieve.mp3"); // adjust path to your sound file
-    audio.volume = 0.5; // optional: adjust volume
+    const audio = new Audio("/static/sounds/achieve.mp3");
+    audio.volume = 0.5;
     audio.play();
 }
 
