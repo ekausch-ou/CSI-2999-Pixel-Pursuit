@@ -13,6 +13,7 @@ urlpatterns = [
     path("2048", views.game2048, name="game_2048"), 
     path("tidal_tap", views.game_tidal, name="game_tidal"),
     path("yahtzee", views.yahtzee, name="yahtzee"),
+    path("plucking_chicken", views.plucking_chicken, name="plucking_chicken"),
     path("food_fight", views.food_fight, name="food_fight"),
     path("minesweeper", views.game_minesweeper, name="game_minesweeper"),
 
