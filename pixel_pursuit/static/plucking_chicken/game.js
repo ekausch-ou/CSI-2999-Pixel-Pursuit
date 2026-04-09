@@ -14,6 +14,12 @@ chickenImg.src = "/static/plucking_chicken/assets/chicken.gif";
 const handImg = new Image();
 handImg.src = "/static/plucking_chicken/assets/hand.png";
 
+const fullHeartImg = new Image();
+fullHeartImg.src = "/static/plucking_chicken/assets/heart_full.png";
+
+const emptyHeartImg = new Image();
+emptyHeartImg.src = "/static/plucking_chicken/assets/heart_empty.png";
+
 const backgroundImg = new Image();
 backgroundImg.src = "/static/plucking_chicken/assets/background.png";
 
@@ -243,6 +249,21 @@ function drawGame(){
     // Score and combo
     ctx.fillText("Score: " + score, 30, 40);
     ctx.fillText("Combo: " + combo, 30, 70);
+    
+    drawHearts()
+}
+
+function drawHearts() {
+    let startX = GAME_WIDTH - 60;
+    let startY = 30;
+    for (let i = 0; i < 5; i++) {
+        if (i < mistakes) {
+            ctx.drawImage(emptyHeartImg, startX, startY, 25, 22);
+        } else {
+            ctx.drawImage(fullHeartImg, startX, startY, 25, 22);
+        }
+        startX -= 30;
+    }
 }
 
 // Game loop
