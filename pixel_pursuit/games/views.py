@@ -14,6 +14,11 @@ def home(request):
 
     return render(request, "pages/home.html")
 
+# About View
+def about(request):
+
+    return render(request, "pages/about.html")
+
 # 2048 Game View
 def game2048(request):
 

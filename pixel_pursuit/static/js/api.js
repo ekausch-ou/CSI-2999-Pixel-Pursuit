@@ -34,17 +34,3 @@ export function unlockAchievement(achievementId) {
         })
     }).then(res => res.json());
 }
-
-//Game file
-//import { submitScore, unlockAchievement } from "/static/js/api.js";
-
-//Implementation
-/*
-unlockAchievement(3).then(data => {
-    if (data.status === "success") {
-        console.log("🎉 Achievement unlocked!");
-    } else if (data.status === "exists") {
-        console.log("Already unlocked");
-    }
-});
-*/

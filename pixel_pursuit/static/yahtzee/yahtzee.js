@@ -12,7 +12,6 @@ export class Yahtzee {
     
     resetRoll() {
         this.rollCount = 3;
-        this.reroll = new Array(5).fill(true);
         this.dice = new Array(5).fill(0);
     }
 

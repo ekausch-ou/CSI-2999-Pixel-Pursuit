@@ -21,7 +21,10 @@
                     <a class="nav-link {% if active == 'achievements' %}active{% endif %}" style="color:#212529"aria-current="page" href="{% url 'achievements' %}">Achievements</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if active == 'achievements' %}active{% endif %}" style="color:#212529"aria-current="page" href="{% url 'leaderboard' %}">Leaderboard</a>
+                    <a class="nav-link {% if active == 'leaderboard' %}active{% endif %}" style="color:#212529"aria-current="page" href="{% url 'leaderboard' %}">Leaderboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if active == 'about' %}active{% endif %}" style="color:#212529"aria-current="page" href="{% url 'about' %}">About</a>
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item d-lg-none">
