@@ -297,12 +297,13 @@ function resizeCanvas() {
     canvas.width = rect.width * dpr;
     canvas.height = rect.height * dpr;
 
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
     const scaleX = rect.width / GAME_WIDTH;
     const scaleY = rect.height / GAME_HEIGHT;
 
-    ctx.setTransform(dpr * scaleX, 0, 0, dpr * scaleY, 0, 0);
+    ctx.scale(scaleX, scaleY);
 }
-
 // Set canvas and start game
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();

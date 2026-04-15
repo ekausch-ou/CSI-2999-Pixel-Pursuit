@@ -405,7 +405,7 @@ function updateBattleTracker() {
 function checkAchievements() {
     // First Blood
     if (enemies_defeated === 1) {
-        unlockAchievement(6) //api call
+        unlockAchievement(6).then(handleAchievementResponse); //api call
     }
 
     // First Loss

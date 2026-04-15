@@ -1,0 +1,66 @@
+body {
+    background-color: rgb(255, 240, 245);
+}
+
+.divider {
+    border-right: 1px solid rgb(167, 167, 167);
+}
+.dark-pink{
+    background-color: #ff69b4;
+}
+.pink {
+    background-color: #ffbed2;
+}
+.light-pink {
+    background-color: rgb(255, 209, 220);
+}
+#board {
+    background-color: rgb(255, 190, 210);
+    margin: 0 auto;
+    display: grid;
+    aspect-ratio: 1 / 1;
+}
+
+#board div {
+    border: 1px solid whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Desktop */
+@media (min-width: 768px) {
+    #board div {
+        font-size: 30px;
+    }
+    .flag-button {
+        font-size: 30px;
+    }
+    #board {
+        height: 70vh;
+        width: auto;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    #board div {
+        font-size: 20px;
+    }
+    .flag-button {
+        font-size: 20px;
+    }
+    #board {
+        width: 90vw;
+        height: auto;
+    }
+}
+
+#difficulty button,
+.restart-button {
+    font-size: 20px;
+    background-color:  rgb(255, 105, 180);
+}
+
+.tile-clicked {
+    background-color: rgb(255, 105, 180);
+}

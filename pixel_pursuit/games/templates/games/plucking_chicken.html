@@ -8,10 +8,11 @@
     </head>
     <style>
         #gameCanvas {
-            width: 900px;   /* display width */
-            height: 600px;  /* display height */
-            display: block; /* removes extra space below canvas */
-            margin: 0 auto; /* center horizontally */
+            width: 100%;
+            max-width: 900px;
+            aspect-ratio: 3 / 2;
+            display: block;
+            margin: 0 auto;
         }
     </style>
 
@@ -19,10 +20,10 @@
     {% include 'elements/navbar.html' with active="home" %}
     <div class="d-flex flex-column pt-2 pb-2 h-100" style="background-color: #EDEDED;">
         <div class="vstack h-100">
-            <div class="container-fluid text-center h-100" style="max-width: 70%;">
+            <div class="container-fluid text-center h-100">
                 <div class="row mb-5">
                     <h2 class="mb-4">Plucking Chicken</h2>
-                    <canvas id="gameCanvas" width="900" height="600"></canvas>
+                    <canvas id="gameCanvas"></canvas>
                 </div>
             </div>
         </div>
