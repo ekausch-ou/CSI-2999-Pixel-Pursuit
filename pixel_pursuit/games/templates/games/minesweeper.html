@@ -4,22 +4,135 @@
     {% include 'elements/includes.html' %}
     <title>Minesweeper</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-</head>
-    
-{% include 'elements/navbar.html' with active="home" %}
-<body onload="burstConfetti();">
-    <div class="confetti-container left"></div>
-    <div class="confetti-container right"></div>
-    <div class="d-flex flex-column pt-2 pb-2 h-100" style="background-color: #fcf1f3;">
-        <div class="vstack h-100">
-            <div class="container-fluid text-center h-100" style="max-width: 70%;">
-                <div class="row mb-5">
-                    <h2 class="mb-4">Minesweeper</h2>
+    <link rel="stylesheet" href="{% static 'minesweeper/style.css' %}">
 
+    <body>
+        {% include 'elements/navbar.html' with active="home" %}
+        <div class="d-flex flex-column pt-2 pb-2 h-100" style="background-color: #fcf1f3;">
+            <div class="vstack h-100">
+                <div class="container-fluid text-center h-100">
+                    <div class="row">
+                        <h2 class="mb-4">Minesweeper</h2>
+                    </div>
+                    <div class="row">
+                        <!-- Desktop -->
+                        <div class="col-lg-3 d-none d-md-flex flex-column align-items-end justify-content-center gap-3">
+                            <div id="status-text" class="card mb-3" style="min-width: 200px;">
+                                <div class="card-header d-flex flex-row gap-3 justify-content-around dark-pink">
+                                    <p class="fs-5 mb-1">Mines</p>
+                                    <div class="vr"></div>
+                                    <p class="fs-5 mb-1">Wins</p>
+                                </div>
+                                <div class="card-body d-flex flex-row gap-3 justify-content-around pink">
+                                    <p class="mines-count display-6 mb-0"></p>
+                                    <p class="win-count display-6 mb-0"></p>
+                                </div>
+                            </div>
+                            <div id="stats-box" class="card mb-3 pink" style="min-width: 200px;">
+                                <div class="card-body d-flex flex-column gap-3">
+                                    <div class="stat">
+                                        ⏱️Time: <span class="timer">00:00</span>
+                                    </div>
+
+                                    <div class="stat">
+                                        🥇Best: <span class="best-time">--:--</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card pink" style="min-width: 200px;">
+                                <div class="card-body d-flex flex-column gap-3">
+                                    <button class="flag-button light-pink btn">🚩</button>
+                                    <button class="restart-button btn">Restart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobile -->
+                        <div class="col-lg-3 d-md-none flex-column align-items-end justify-content-center gap-3">
+                            <div id="status-text" class="card mb-3">
+                                <div class="card-header dark-pink">
+                                    <div class="row align-items-center">
+                                        <div class="col-3 divider">
+                                            <p class="fs-5 mb-1">Mines</p>
+                                        </div>
+                                        <div class="col-3 divider">
+                                            <p class="fs-5 mb-1">Wins</p>
+                                        </div>
+                                        <div class="col-3 divider">
+                                            <p class="fs-5 mb-1">Time</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p class="fs-5 mb-1">Best</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body pink">
+                                    <div class="row align-items-center">
+                                        <div class="col-3">
+                                            <p class="mines-count display-6 mb-0">0</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p class="win-count display-6 mb-0">0</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p class="timer fs-5 mb-0">00:00</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p class="best-time fs-5 mb-0">--:--</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex flex-row gap-3 pink">
+                                    <button class="flag-button light-pink btn w-50">🚩</button>
+                                    <button class="restart-button btn w-50">Restart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 d-flex flex-column align-items-center justify-content-center gap-2 p-0 mb-3">
+                            <!-- Desktop -->
+                            <div id="difficulty" class="d-none d-md-flex flex-row justify-content-between gap-3">
+                                <button class="btn difficulty" data-difficulty="easy">Easy</button>
+                                <button class="btn difficulty" data-difficulty="medium">Medium</button>
+                                <button class="btn difficulty" data-difficulty="hard">Hard</button>
+                            </div>
+
+                            <div class="card" style="border: 10px solid rgb(255, 105, 180);">
+                                <div id="board" class="card-body p-0 m-0">
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-3 d-none d-md-flex"></div>
+                        </div>
+                        <!-- Mobile -->
+                        <div id="difficulty" class="card d-md-none pink">
+                            <div class="card-body d-flex flex-row justify-content-around gap-3">
+                                <button class="btn difficulty" style="width: 33%" data-difficulty="easy">Easy</button>
+                                <button class="btn difficulty" style="width: 33%" data-difficulty="medium">Medium</button>
+                                <button class="btn difficulty" style="width: 33%" data-difficulty="hard">Hard</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-<script type="module" src="{% static 'minesweeper/game.js' %}"></script>
-</body>
+        <!-- End Game Modal -->
+        <div class="modal fade" id="endGameModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centere">
+                <div class="modal-content pink">
+                    <div class="modal-header">
+                        <h5 id="result-title" class="modal-title">💥 GAME OVER 💥</h5>
+                    </div>
+                    <div class="modal-body text-center light-pink">
+                        <p id="result-body"></p>
+                        <p>Play again?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn dark-pink" id="newGameBtn">New Game</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include 'elements/achieve_message.html' %}
+        <script type="module" src="{% static 'minesweeper/game.js' %}"></script>
+    </body>
+</html> 
