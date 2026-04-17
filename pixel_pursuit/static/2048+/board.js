@@ -27,104 +27,28 @@ export class Board {
         this.score = score;
     }
 
-    getHighTile() {
-        let high = 0;
-        for (let i = 0; i < this.board.length; i++) {
-            for (let j = 0; j < this.board[i].length; j++) {
-                if (this.board[i][j].getValue() > high) {
-                    high = this.board[i][j].getValue();
-                }
-            }
-        }
-
-        return high;
-    }
-
-    spawn() {
-        if (this.blackOut()) return;
-
-        let empty = true;
-        while (empty) {
-            let row = Math.floor(Math.random() * this.grids);
-            let col = Math.floor(Math.random() * this.grids);
-
-            if (this.board[row][col].getValue() === 0) {
-                this.board[row][col] = new Tile(Math.random() < 0.2 ? 4 : 2);
-                empty = false;
-            }
-        }
-    }
-
-    blackOut() {
-        for (let i = 0; i < this.board.length; i++) {
-            for (let j = 0; j < this.board[i].length; j++) {
-                if (this.board[i][j].getValue() === 0) return false;
-            }
-        }
-        return true;
-    }
-
-    gameOver() {
-        let size = this.board.length;
-
-        for (let i = 0; i < size; i++) {
-            for (let j = 0; j < size; j++) {
-                let value = this.board[i][j].getValue();
-
-                if (value === 0) return false;
-
-                if (j < size - 1 && value === this.board[i][j + 1].getValue())
-                    return false;
-
-                if (i < size - 1 && value === this.board[i + 1][j].getValue())
-                    return false;
-            }
-        }
-
-        return true;
+    createResult() {
+        return {
+            moved: false,
+            highlights: []
+        };
     }
 
     copyBoard() {
         let copy = [];
-
         for (let i = 0; i < this.board.length; i++) {
             copy[i] = [];
             for (let j = 0; j < this.board[i].length; j++) {
                 copy[i][j] = new Tile(this.board[i][j].getValue());
             }
         }
-
         return copy;
-    }
-
-    copyBoardValues() {
-        let copy = [];
-
-        for (let i = 0; i < this.board.length; i++) {
-            copy[i] = [];
-            for (let j = 0; j < this.board[i].length; j++) {
-                copy[i][j] = this.board[i][j].getValue();
-            }
-        }
-
-        return copy;
-    }
-
-    restoreBoardValues(values) {
-        for (let i = 0; i < this.board.length; i++) {
-            for (let j = 0; j < this.board[i].length; j++) {
-                this.board[i][j].setValue(values[i][j]);
-            }
-        }
     }
 
     boardChanged(oldBoard) {
         for (let i = 0; i < this.board.length; i++) {
             for (let j = 0; j < this.board[i].length; j++) {
-                if (
-                    this.board[i][j].getValue() !==
-                    oldBoard[i][j].getValue()
-                ) {
+                if (this.board[i][j].getValue() !== oldBoard[i][j].getValue()) {
                     return true;
                 }
             }
@@ -132,37 +56,49 @@ export class Board {
         return false;
     }
 
+    // =========================
+    // UP
+    // =========================
     up() {
-        for (let i = 0; i < this.grids; i++) {
+        let result = this.createResult();
+        let oldBoard = this.copyBoard();
+
+        for (let col = 0; col < this.grids; col++) {
             this.border = 0;
 
-            for (let j = 0; j < this.grids; j++) {
-                if (
-                    this.board[j][i].getValue() !== 0 &&
-                    this.border <= j
-                ) {
-                    this.verticalMove(j, i, "up");
+            for (let row = 0; row < this.grids; row++) {
+                if (this.board[row][col].getValue() !== 0 && this.border <= row) {
+                    this.verticalMove(row, col, "up", result);
                 }
             }
         }
+
+        result.moved = this.boardChanged(oldBoard) || result.moved;
+        return result;
     }
 
+    // =========================
+    // DOWN
+    // =========================
     down() {
-        for (let i = 0; i < this.grids; i++) {
+        let result = this.createResult();
+        let oldBoard = this.copyBoard();
+
+        for (let col = 0; col < this.grids; col++) {
             this.border = this.grids - 1;
 
-            for (let j = this.grids - 1; j >= 0; j--) {
-                if (
-                    this.board[j][i].getValue() !== 0 &&
-                    this.border >= j
-                ) {
-                    this.verticalMove(j, i, "down");
+            for (let row = this.grids - 1; row >= 0; row--) {
+                if (this.board[row][col].getValue() !== 0 && this.border >= row) {
+                    this.verticalMove(row, col, "down", result);
                 }
             }
         }
+
+        result.moved = this.boardChanged(oldBoard) || result.moved;
+        return result;
     }
 
-    verticalMove(row, col, direction) {
+    verticalMove(row, col, direction, result) {
         let initial = this.board[this.border][col];
         let compare = this.board[row][col];
 
@@ -174,54 +110,73 @@ export class Board {
                 row > this.border ||
                 (direction === "down" && row < this.border)
             ) {
-                let addScore =
-                    initial.getValue() + compare.getValue();
+                let addScore = initial.getValue() + compare.getValue();
 
-                if (initial.getValue() !== 0)
+                if (initial.getValue() !== 0) {
                     this.score += addScore;
+                }
 
                 initial.setValue(addScore);
                 compare.setValue(0);
+
+                result.highlights.push({
+                    from: [row, col],
+                    to: [this.border, col]
+                });
+
+                result.moved = true;
             }
         } else {
             if (direction === "down") this.border--;
             else this.border++;
 
-            this.verticalMove(row, col, direction);
+            this.verticalMove(row, col, direction, result);
         }
     }
 
+    // =========================
+    // LEFT
+    // =========================
     left() {
-        for (let i = 0; i < this.grids; i++) {
+        let result = this.createResult();
+        let oldBoard = this.copyBoard();
+
+        for (let row = 0; row < this.grids; row++) {
             this.border = 0;
 
-            for (let j = 0; j < this.grids; j++) {
-                if (
-                    this.board[i][j].getValue() !== 0 &&
-                    this.border <= j
-                ) {
-                    this.horizontalMove(i, j, "left");
+            for (let col = 0; col < this.grids; col++) {
+                if (this.board[row][col].getValue() !== 0 && this.border <= col) {
+                    this.horizontalMove(row, col, "left", result);
                 }
             }
         }
+
+        result.moved = this.boardChanged(oldBoard) || result.moved;
+        return result;
     }
 
+    // =========================
+    // RIGHT
+    // =========================
     right() {
-        for (let i = 0; i < this.grids; i++) {
+        let result = this.createResult();
+        let oldBoard = this.copyBoard();
+
+        for (let row = 0; row < this.grids; row++) {
             this.border = this.grids - 1;
 
-            for (let j = this.grids - 1; j >= 0; j--) {
-                if (
-                    this.board[i][j].getValue() !== 0 &&
-                    this.border >= j
-                ) {
-                    this.horizontalMove(i, j, "right");
+            for (let col = this.grids - 1; col >= 0; col--) {
+                if (this.board[row][col].getValue() !== 0 && this.border >= col) {
+                    this.horizontalMove(row, col, "right", result);
                 }
             }
         }
+
+        result.moved = this.boardChanged(oldBoard) || result.moved;
+        return result;
     }
 
-    horizontalMove(row, col, direction) {
+    horizontalMove(row, col, direction, result) {
         let initial = this.board[row][this.border];
         let compare = this.board[row][col];
 
@@ -233,20 +188,89 @@ export class Board {
                 col > this.border ||
                 (direction === "right" && col < this.border)
             ) {
-                let addScore =
-                    initial.getValue() + compare.getValue();
+                let addScore = initial.getValue() + compare.getValue();
 
-                if (initial.getValue() !== 0)
+                if (initial.getValue() !== 0) {
                     this.score += addScore;
+                }
 
                 initial.setValue(addScore);
                 compare.setValue(0);
+
+                result.highlights.push({
+                    from: [row, col],
+                    to: [row, this.border]
+                });
+
+                result.moved = true;
             }
         } else {
             if (direction === "right") this.border--;
             else this.border++;
 
-            this.horizontalMove(row, col, direction);
+            this.horizontalMove(row, col, direction, result);
         }
     }
+
+    spawn() {
+        let result = this.createResult();
+        if (this.blackOut()) return;
+
+        let empty = true;
+
+        while (empty) {
+            let row = Math.floor(Math.random() * this.grids);
+            let col = Math.floor(Math.random() * this.grids);
+
+            if (this.board[row][col].getValue() === 0) {
+                this.board[row][col] =
+                    new Tile(Math.random() < 0.2 ? 4 : 2);
+
+                result.highlights.push({
+                    from: null,
+                    to: [row, col],
+                });
+
+                empty = false;
+            }
+        }
+        result.moved = true;
+        return result;
+    }
+
+    blackOut() {
+        for (let i = 0; i < this.grids; i++) {
+            for (let j = 0; j < this.grids; j++) {
+                if (this.board[i][j].getValue() === 0) return false;
+            }
+        }
+        return true;
+    }
+
+    gameOver() {
+        const size = this.board.length;
+
+        for (let i = 0; i < size; i++) {
+            for (let j = 0; j < size; j++) {
+                const value = this.board[i][j].getValue();
+                if (value === 0) return false;
+                if (j < size - 1 &&
+                    value === this.board[i][j + 1].getValue()) {
+                    return false;
+                }
+                if (i < size - 1 &&
+                    value === this.board[i + 1][j].getValue()) {
+                    return false;
+                }
+            }
+        }
+
+    return true;
+}
+
+    copyBoardValues() {
+        return this.board.map(row => row.map(tile => tile.getValue())
+    );
+}
+
 }

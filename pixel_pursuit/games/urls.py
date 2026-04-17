@@ -11,7 +11,7 @@ path("", views.home, name="home"),                                              
     path("register", views.register, name="register"),                                      # User Registration URL
 
     #Games
-    path("2048", views.game2048, name="game_2048"),                                         # Game I - 2048+
+    path("2048+", views.game2048, name="game_2048"),                                        # Game I - 2048+
     path("tidal_tap", views.game_tidal, name="game_tidal"),                                 # Game II - Tidal Tap
     path("minesweeper", views.game_minesweeper, name="game_minesweeper"),                   # Game III - Minesweeper
     path("plucking_chicken", views.plucking_chicken, name="plucking_chicken"),              # Game IV - Plucking Chicken
