@@ -5,10 +5,10 @@
         width: auto;
     }
     p {
-        font-size: 30px;
+        font-size: 25px;
     }
     h1 {
-        font-size: 45px;
+        font-size: 35px;
     }
 }
 
@@ -20,16 +20,16 @@
     }
 }
 .rainbow {
-  background: linear-gradient(
-    135deg,
-    rgb(255, 80, 80) 0%,
-    rgb(255, 170, 60) 14%,
-    rgb(255, 230, 80) 30%,
-    rgb(90, 220, 110) 50%,
-    rgb(80, 190, 255) 70%,
-    rgb(130, 120, 255) 86%,
-    rgb(255, 120, 220) 100%
-  );
+    background: linear-gradient(
+        135deg,
+        rgb(255, 80, 80) 0%,
+        rgb(255, 170, 60) 14%,
+        rgb(255, 230, 80) 30%,
+        rgb(90, 220, 110) 50%,
+        rgb(80, 190, 255) 70%,
+        rgb(130, 120, 255) 86%,
+        rgb(255, 120, 220) 100%
+    );
 }
 #board {
     margin: 0 auto;
@@ -44,6 +44,10 @@
     border: 5px solid black;
     cursor: pointer;
     overflow: hidden;
+}
+.action-selected {
+    background-color: #91f279 !important;
+    border: 5px solid #ffffff;
 }
 .title {
     background-color: black;
@@ -102,7 +106,7 @@
     }
 }
 .score-animate {
-  animation: scorePop 0.3s ease-out;
+    animation: scorePop 0.3s ease-out;
 }
 /* Tile and Colors */
 .tile {

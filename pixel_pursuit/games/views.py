@@ -91,7 +91,10 @@ def achievements(request):
         aObj = Achievement.objects.filter(game=game.id)
         gameAchievements = []
         for achive in aObj:
-            achieved = UserAchievement.objects.filter(user=request.user, achievement=achive.id).exists()
+            try:
+                achieved = UserAchievement.objects.filter(user=request.user, achievement=achive.id).exists()
+            except:
+                achieved = False
             gameAchievements.append({
                 'name': achive.name,
                 'description': achive.description,

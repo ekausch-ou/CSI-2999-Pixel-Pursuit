@@ -1,9 +1,15 @@
 // CSRF helper
 function getCSRFToken() {
-    return document.cookie
+    const token = document.cookie
         .split("; ")
         .find(row => row.startsWith("csrftoken="))
         ?.split("=")[1];
+
+    if (!token) {
+        console.warn("CSRF token not found");
+    }
+
+    return token;
 }
 
 // Submit score

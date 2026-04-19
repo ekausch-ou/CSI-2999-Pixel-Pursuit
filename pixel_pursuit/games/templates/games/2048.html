@@ -51,7 +51,7 @@
                         <!-- Desktop -->
                         <div class="col-lg-3 d-none d-md-block">
                             <div class="row d-flex flex-column align-items-end p-3">
-                                <div class="col-8">
+                                <div class="col-10">
                                     <div class="card mb-3">
                                         <div class="card-header dark-pink">
                                             <div class="row align-items-center">
@@ -146,7 +146,7 @@
                         <!-- Desktop -->
                         <div class="col-lg-3 d-none d-md-block">
                             <div class="row d-flex flex-column align-items-start p-3">
-                                <div class="col-8">
+                                <div class="col-10">
                                     <div class="card mb-3">
                                         <div class="card-header dark-pink">
                                             <div class="row align-items-center">
@@ -184,7 +184,7 @@
                                     <div class="card action mb-3" style="background-color: #b4afaa;" data-action="ball">
                                         <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
                                             <div class="fs-5 mb-1">NO BALL</div>
-                                            <div class="mb-3">Unlock @ 2048</div>
+                                            <div class="mb-3">Unlock @ 512</div>
                                             <div>Uses:<strong class="ball-use ms-1">1</strong></div>
                                             <strong class="ball-ready">LOCKED</strong>
                                         </div>
@@ -226,6 +226,26 @@
                         <div class="card mb-3" style="background-color: #5a5a5a;">
                             <div class="card-body">
                                 <p id="achievementContinue" class="mb-2 text-light"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Game Win Modal -->
+        <div class="modal fade" id="winModal" tabindex="-1">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content">
+                    <div class="modal-body d-flex flex-column align-items-center justify-content-around card-game text-center" style="background-color: #e3ddce;">
+                        <img src="{% static '2048+/assets/trophy.png' %}" style="height: 25%; width: auto;">
+                        <div class="mb-3">
+                            <p class="mb-0 text-dark">CONGRATULATIONS</p>
+                            <p class="mb-0" style="color: red;"><strong id="">You made it to 2048!</strong></p>
+                            <p class="mb-0" style="color: red;"><strong id="">How far can you go?</strong></p>
+                        </div>
+                        <div class="card mb-3" style="background-color: #5a5a5a;">
+                            <div class="card-body">
+                                <p id="winContinue" class="mb-2 text-light"></p>
                             </div>
                         </div>
                     </div>

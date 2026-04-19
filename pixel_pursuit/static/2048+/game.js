@@ -59,10 +59,13 @@ let ballLoopStarted = false;
 
 // UI Elements
 let achieveModalOpen = false;
+let winModalOpen = false;
+let winGame = false;
 const boardDiv = document.getElementById("board");
 const cardDiv = document.getElementById("board-card");
 const achievementModal = new bootstrap.Modal(document.getElementById('achievementModal'));
 const endGameModal = new bootstrap.Modal(document.getElementById('endGameModal'));
+const winGameModal = new bootstrap.Modal(document.getElementById('winModal'));
 
 // ==============================
 // Display Screens
@@ -77,22 +80,22 @@ function drawRulesScreen() {
     }
     boardDiv.removeAttribute("style");
     boardDiv.innerHTML = `
-        <div class="mb-3">
+        <div class="mb-0">
             <h1>2048+ Rules</h1>
         </div>
-        <div class="mb-3">
+        <div class="mb-2">
             <p class="mb-0">${controlText} to slide the tiles.</p>
             <p class="mb-0">Tiles with the same number merge together.</p>
             <p class="mb-0">Each merge increases your score.</p>
         </div>
-        <div class="mb-3">
+        <div class="mb-2">
             <p class="mb-0"><strong>Reach 2048 to win!</strong></p>
         </div>
-        <div class="mb-3">
-            <p class="mb-2">A green ball will randomly cover tiles.</p>
+        <div class="mb-2">
+            <p class="mb-1">A green ball will randomly cover tiles.</p>
             <p class="mb-0">Undo/Delete/Swap each have <strong>3</strong> uses.</p>
             <p class="mb-0">Only one special move every <strong>10</strong> moves.</p>
-            <p class="mb-2">Remove Ball <strong>unlocks</strong> at 1024.</p>
+            <p class="mb-1">Remove Ball <strong>unlocks</strong> at 1024.</p>
         </div>
         <div>
             <h3 class="mb-0">${startText} to Continue</h3>
@@ -110,6 +113,17 @@ function drawAchieveScreen(msg) {
   
     achievementModal.show();
     achieveModalOpen = true;
+}
+
+function drawWinScreen(msg) {
+    let contText = 'Press SPACE'
+    if (window.innerWidth <= 768) {
+        contText = 'Click'
+    }
+    document.getElementById('winContinue').innerHTML = contText + ' to go back to the game.';
+  
+    winGameModal.show();
+    winModalOpen = true;
 }
 
 
@@ -249,7 +263,6 @@ function updateMoves() {
             btn.classList.add("score-animate");
         }
     })
-
 }
 
 function updateCooldown() {
@@ -289,10 +302,15 @@ function getLargestTile() {
             }
         }
     }
-    if (max >= 2048) {
+    if (max >= 512) {
         actions.ball.ready = true;
-        document.getElementById("background").classList.add("rainbow")
         updateActions();
+    }
+    if (max >= 2048 && !winGame) {
+        winGame = true;
+        document.getElementById("background").classList.add("rainbow");
+        drawWinScreen();
+        burstConfetti();
     }
     return max;
 }
@@ -427,10 +445,12 @@ function handleAction(action) {
         if (action === "delete" && actions.delete.uses > 0) {
             deleteMode = true;            
             swapMode = false;
+            selectAction(action, true);
         }
         if (action === "swap" && actions.swap.uses > 0) {
             swapMode = true;
             deleteMode = false;
+            selectAction(action, true);
         }
         if (action === "ball" && actions.ball.uses > 0 && actions.ball.ready) {
             actions.ball.uses--;
@@ -442,6 +462,16 @@ function handleAction(action) {
         updateHighest();
         updateMoves();
     }
+}
+
+function selectAction(action, set) {
+    document.querySelectorAll(".action").forEach((btn) => {
+        if (btn.dataset.action === action && set) {
+            btn.classList.add("action-selected");
+        } else {
+            btn.classList.remove("action-selected");
+        }
+    })
 }
 
 function handleTileClick(r, c) {
@@ -459,6 +489,7 @@ function handleTileClick(r, c) {
         boardModel.board[r][c].setValue(0);
         abilityCooldown = 10;
         actions.delete.uses--;
+        selectAction('delete', false);
     }
  
     // Swap Tile Action
@@ -489,6 +520,7 @@ function handleTileClick(r, c) {
         swapMode = false;
         abilityCooldown = 10;
         actions.swap.uses--;
+        selectAction('swap', false);
     }
     renderBoard();
     updateActions();
@@ -595,14 +627,10 @@ function triggerGameOver() {
     document.getElementById("result-title").innerHTML = resultTitle;
     document.getElementById("result-body").innerHTML = resultText;
 
-    const modal = bootstrap.Modal.getOrCreateInstance(
-        document.getElementById('endGameModal')
-    );
-
-    modal.show();
+    endGameModal.show();
 
     document.getElementById("newGameBtn").onclick = () => {
-        modal.hide();
+        endGameModal.hide();
         restartGame();
     };
 }
@@ -630,6 +658,9 @@ function handleTouchStart(e) {
     }
     if (achieveModalOpen) {
         achievementModal.hide();
+    }
+    if (winModalOpen) {
+        winGameModal.hide();
     }
 
     const t = e.touches[0];
@@ -704,7 +735,12 @@ function handleSwipe() {
     afterMove(result);
 }
 
+const arrowKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
 document.addEventListener("keydown", function (e) {
+    // prevent scrolling during game
+    if (started && arrowKeys.includes(e.key)) {
+        e.preventDefault();
+    }
     // pre-game key
     if (e.code === "Space" && !started) {
         e.preventDefault(); 
@@ -712,6 +748,9 @@ document.addEventListener("keydown", function (e) {
     }
     if (e.code === "Space" && achieveModalOpen) {
         achievementModal.hide();
+    }
+    if (e.code === "Space" && winModalOpen) {
+        winGameModal.hide();
     }
     if (e.key === "Escape" && (deleteMode || swapMode)) {
         deleteMode = false;

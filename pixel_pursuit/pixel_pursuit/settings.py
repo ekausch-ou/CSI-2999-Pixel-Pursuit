@@ -137,4 +137,4 @@ EMAIL_USE_TLS = True
 # Environmental variables for security
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
-DEFAULT_FROM_EMAIL = "Pixel Pursuit <yourgmail@gmail.com>"
+DEFAULT_FROM_EMAIL = "Pixel Pursuit <ekausch@oakland.edu>"
