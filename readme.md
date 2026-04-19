@@ -1,5 +1,7 @@
 # Pixel Pursuit
 
+Pixel Pursuit is a web-based, arcade-style gaming platform that brings together a collection of engaging mini-games in one accessible online space. It offers a variety of browser-playable games where players can earn achievements, track their performance, and compete through high scores, leaderboards, and user profiles. The platform is fully web-based and includes mini-games with diverse mechanics, integrated achievement and scoring systems, and user management features such as authentication and profiles. Pixel Pursuit is designed for gamers who enjoy casual yet competitive experiences, especially those drawn to quick, replayable games and motivated by progression, achievements, and leaderboard rankings.
+
 ## Setup & Installation
 
 The best practice for working with this project is to use a Python virtual environment (venv) so that dependencies are isolated from your system Python.
@@ -14,7 +16,7 @@ python3 -m venv venv
 ```
 source venv/bin/activate
 ```
-#### macOS / Linux
+#### Windows (PowerShell)
 ```
 .\venv\Scripts\Activate.ps1
 ```
