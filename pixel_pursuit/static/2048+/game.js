@@ -3,6 +3,11 @@ import { Board } from './board.js';
 import { submitScore, unlockAchievement } from "/static/js/api.js";
 import { burstConfetti } from "/static/js/achievement.js";
 
+// Load audio
+const bg_audio = new Audio("/static/2048+/assets/music.ogg");
+bg_audio.volume = 0.6;
+bg_audio.loop = true;
+
 // Mobile Swipe Controls
 let touchStartX = 0;
 let touchStartY = 0;
@@ -132,6 +137,8 @@ function drawWinScreen(msg) {
 // ==============================
 
 function gameStart() {
+    bg_audio.play();
+
     if (started) return;
     started = true;
 

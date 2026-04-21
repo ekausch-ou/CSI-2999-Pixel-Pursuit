@@ -5,7 +5,7 @@ import json
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
 from django.http import JsonResponse
-
+from django.contrib.auth.models import User
 from .forms import RegisterForm
 from .models import Achievement, UserAchievement, HighScore, Game
 
@@ -154,6 +154,13 @@ def unlock_achievement(request):
         achievement_id = data.get("achievement_id")
 
         achievement = Achievement.objects.get(id=achievement_id)
+        if not request.user.is_authenticated: #allows guests to get achievements but not save them
+            return JsonResponse({
+                "status": "success",
+                "message": "Achievement unlocked!",
+                "name": achievement.name,
+                "description": achievement.description
+            })
 
         user_achievement, created = UserAchievement.objects.get_or_create(
             user=request.user,
@@ -179,4 +186,5 @@ def unlock_achievement(request):
         return JsonResponse({"status": "error", "message": "Invalid achievement"}, status=404)
 
     except Exception as e:
+        print(e)
         return JsonResponse({"status": "error", "message": str(e)}, status=400)

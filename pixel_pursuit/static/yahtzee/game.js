@@ -2,6 +2,13 @@ import { Yahtzee } from "/static/yahtzee/yahtzee.js";
 import { submitScore, unlockAchievement } from "/static/js/api.js";
 import { showAchievement, burstConfetti } from "/static/js/achievement.js";
 
+// Load audio
+const bg_audio = new Audio("/static/yahtzee/assets/background.ogg");
+bg_audio.volume = 0.6;
+bg_audio.loop = true;
+
+let gameStated = false;
+
 const diceContainer = document.getElementById("diceContainer");
 const rollBtn = document.getElementById("rollBtn");
 const rollsLeftSpan = document.getElementById("rollsLeft");
@@ -338,6 +345,9 @@ scoreInputs.forEach(input => {
 });
 
 rollBtn.onclick = () => {
+    if (!gameStated) {
+        bg_audio.play();
+    }
     if (rollsLeft > 0 && !isRolling) {
         // Show dice if hidden
         dice.forEach(d => d.el.style.display = "block");

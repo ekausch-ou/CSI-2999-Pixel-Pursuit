@@ -1,6 +1,13 @@
 import { submitScore, unlockAchievement } from "/static/js/api.js";
 import { showAchievement, burstConfetti } from "/static/js/achievement.js";
 
+// Load audio
+const ping_audio = new Audio("/static/minesweeper/assets/ping.ogg");
+ping_audio.volume = 0.3;
+
+const explosion_audio = new Audio("/static/minesweeper/assets/explosion.ogg");
+explosion_audio.volume = 0.6;
+
 let firstClick = true;
 
 let board = [];
@@ -124,9 +131,12 @@ function clickTile() {
 
     if (tile.dataset.flagged !== "true") {
         if (minesLocation.includes(tile.id)) {
+            explosion_audio.currentTime = 0;
+            explosion_audio.play();
             handleGameEnd("loss");
         }
-        
+        ping_audio.currentTime = 0;
+        ping_audio.play();
         let coords = tile.id.split("-");
         let r = parseInt(coords[0]);
         let c = parseInt(coords[1]);
@@ -240,7 +250,7 @@ function handleGameEnd(result) {
     disableButtons(false);
     gameOver = true;
     stopTimer();
-
+    
     let resultTitle = '';
     let resultText = '';
     if (result === "win") {
