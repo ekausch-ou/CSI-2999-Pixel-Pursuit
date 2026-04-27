@@ -643,6 +643,7 @@ function triggerGameOver() {
 }
 
 function afterMove(result) {
+    renderBoard();
     updateScores();
     updateMoves();
     updateActions();
@@ -737,7 +738,6 @@ function handleSwipe() {
             void tileDiv.offsetWidth;
             tileDiv.classList.add("tile-pop");
         });
-        
     }
     afterMove(result);
 }

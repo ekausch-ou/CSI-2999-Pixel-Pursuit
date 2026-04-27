@@ -5,19 +5,21 @@
         {% include 'elements/includes.html' %}
         <title>Tidal Tap</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'tidal tap/style.css' %}">
     </head>
-<body>
-    
-{% include 'elements/navbar.html' with active="home" %}
-<body>
-    <div class="d-flex flex-column pt-2 pb-2">
-        <div class="vstack h-100">
-            <div class="container-fluid text-center h-100" style="max-width: 70%;">
-                <div class="row mb-5">
-                    <h2 class="mb-4">Tidal Tap</h2>
-
+    <body>
+        {% include 'elements/navbar.html' with active="home" %}
+        <div class="d-flex flex-column pt-2 pb-2 h-100 background">
+            <div class="vstack h-100">
+                <div class="container-fluid text-center h-100" style="max-width: 70%;">
+                    <div class="row mb-5 d-flex justify-content-center">
+                        <h2 class="mb-4">Tidal Tap</h2>
+                        <canvas id="game" width="480" height="640" style="width: auto; height: 80vh; aspect-ratio: 3/4;"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
+        {% include 'elements/achieve_message.html' %}
+        <script type="module" src="{% static 'tidal tap/game.js' %}"></script>
+    </body>
+</html>

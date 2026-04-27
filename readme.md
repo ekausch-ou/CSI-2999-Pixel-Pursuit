@@ -35,3 +35,29 @@ python manage.py runserver 0.0.0.0:8000
 ### View the Application
 To view the application
 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+
+## Docker Setup (Recommended)
+Pixel Pursuit can also be run using Docker, which removes the need to install Python or dependencies manually.
+### Prerequisites
+
+Make sure you have:
+- Docker installed → https://www.docker.com/get-started
+- Docker Compose installed (included with Docker Desktop)
+
+### Running with Docker:
+### Build and start the app
+docker-compose up --build
+
+### Open the application
+http://localhost
+
+### Run migrations (first time only)
+docker-compose exec web python manage.py migrate
+
+### Create a superuser (optional)
+docker-compose exec web python manage.py createsuperuser
+
+## Stopping the containers
+docker-compose down
+
+## View the Applicationhttp://localhost

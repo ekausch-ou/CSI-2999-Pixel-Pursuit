@@ -101,7 +101,7 @@ def achievements(request):
                 'achieved': achieved
             })
         allAchievements[game] = gameAchievements
-    print(allAchievements)
+
     return render(request, "pages/achievements.html", {
         "achievements": allAchievements,
         })
@@ -186,5 +186,4 @@ def unlock_achievement(request):
         return JsonResponse({"status": "error", "message": "Invalid achievement"}, status=404)
 
     except Exception as e:
-        print(e)
         return JsonResponse({"status": "error", "message": str(e)}, status=400)

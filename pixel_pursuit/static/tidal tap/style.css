@@ -1,0 +1,13 @@
+.background {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        #0a4f6d 0%,
+        #0f7c9c 25%,
+        #3bb3c3 50%,
+        #7ed6d1 65%,
+        #e6d3a3 80%,
+        #f3e2b8 100% 
+    );
+}
