@@ -46,16 +46,24 @@ Make sure you have:
 
 ### Running with Docker:
 ### Build and start the app
+```
 docker-compose up --build
+```
 
 ### Open the application
 http://localhost
 
 ### Run migrations (first time only)
+```
 docker-compose exec web python manage.py migrate
+```
 
 ### Create a superuser (optional)
+```
 docker-compose exec web python manage.py createsuperuser
+```
 
 ## Stopping the containers
+```
 docker-compose down
+```
