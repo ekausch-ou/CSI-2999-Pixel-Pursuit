@@ -59,5 +59,3 @@ docker-compose exec web python manage.py createsuperuser
 
 ## Stopping the containers
 docker-compose down
-
-## View the Applicationhttp://localhost
